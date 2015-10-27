@@ -10,6 +10,7 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
+            System.Console.WriteLine("START");
             int i;
             for (i = 1; i <= 100; i++)
             {
