@@ -10,7 +10,23 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
-            System.Console.WriteLine("Hello world");
+            int i;
+            for (i = 1; i <= 100; i++)
+            {
+                if ((i % 3) == 0)
+                {
+                    System.Console.Write("Fizz");
+                }
+                if((i % 5) == 0)
+                {
+                    System.Console.Write("Buzz");
+                }
+                if((i % 3) != 0 && (i % 5) != 0)
+                {
+                    System.Console.Write(i);
+                }
+                System.Console.WriteLine();
+            }
         }
     }
 }
