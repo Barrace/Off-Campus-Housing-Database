@@ -42,6 +42,11 @@ namespace OffCampusHousingDatabase
                 StatusLabel.Text = "Invalid Email Address";
                 return;
             }
+            else if (EmailTextbox.Text.Contains(" "))
+            {
+                StatusLabel.Text = "Emails cannot contain any spaces";
+                return;
+            }
             else if (PasswordBox.Password.Length<6)
             {
                 StatusLabel.Text = "Password must be at least 6 characters";
