@@ -24,8 +24,6 @@
         <Label Content="Rent Less Than " HorizontalAlignment="Left" Margin="617,176,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="FilterRentTextbox" HorizontalAlignment="Left" Height="23" Margin="709,179,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="67"/>
         <Button x:Name="FilterButton"  Content="Filter" HorizontalAlignment="Left" Margin="652,251,0,0" VerticalAlignment="Top" Width="75" Click="FilterButton_Click"/>
-        <Button x:Name="UploadImage"  Content="Upload Image" HorizontalAlignment="Left" Margin="652,322,0,0" VerticalAlignment="Top" Width="124" Click="UploadImageButton_Click"/>
-        <Button x:Name="ViewImage"  Content="View Image" HorizontalAlignment="Left" Margin="652,368,0,0" VerticalAlignment="Top" Width="124" Click="ViewImageButton_Click"/>
 
 
     </Grid>
