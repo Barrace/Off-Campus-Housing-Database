@@ -23,6 +23,7 @@ namespace OffCampusHousingDatabase
         DatabaseHelper dbHelper;
 
         int ID;
+        String email = "";
 
         public PropertyDescription(int propertyID)
         {
@@ -46,10 +47,23 @@ namespace OffCampusHousingDatabase
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow m = new MainWindow();
+            MainWindow m;
+            if (this.email.Equals(""))
+            {
+                m = new MainWindow();
+            }
+            else
+            {
+                m = new MainWindow(email);
+            }
             App.Current.MainWindow = m;
             this.Close();
             m.Show();
+        }
+
+        public void setEmail(String email)
+        {
+            this.email = email;
         }
     }
 }

@@ -98,9 +98,10 @@ namespace OffCampusHousingDatabase
             PropertyItem n = (PropertyItem)PropertyListView.SelectedItem;
 
             PropertyDescription pd = new PropertyDescription(n.PropID);
+            pd.setEmail(this.email);
             App.Current.MainWindow = pd;
-            this.Close();
             pd.Show();
+            this.Close();
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
@@ -154,7 +155,6 @@ namespace OffCampusHousingDatabase
                 MessageBox.Show(arr.ToString());
             }
         }
-
 
         private void loadProperties()
         {
