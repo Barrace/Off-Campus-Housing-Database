@@ -15,12 +15,15 @@ using System.Configuration;
 
 namespace OffCampusHousingDatabase
 {
-    /// <summary>
-    /// Interaction logic for Login.xaml
-    /// </summary>
     public partial class Login : Window
     {
+        #region Variables
+
         DatabaseHelper dbHelper;
+
+        #endregion
+
+        #region Listeners
 
         public Login()
         {
@@ -31,41 +34,7 @@ namespace OffCampusHousingDatabase
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            //First validate to make sure all of the fields are filled with some information
-            if (EmailTextbox.Text.Equals(""))
-            {
-                StatusLabel.Text = "Email cannot be empty, please enter valid email";
-                return;
-            }
-            else if (!EmailTextbox.Text.Contains("@"))
-            {
-                StatusLabel.Text = "Invalid Email Address";
-                return;
-            }
-            else if (EmailTextbox.Text.Contains(" "))
-            {
-                StatusLabel.Text = "Emails cannot contain any spaces";
-                return;
-            }
-            else if (PasswordBox.Password.Length<6)
-            {
-                StatusLabel.Text = "Password must be at least 6 characters";
-                return;
-            }
-
-            String pw = ((Int32)PasswordBox.Password.GetHashCode()).ToString();
-
-            if(dbHelper.DatabaseSelect("User", "`email` = '" + EmailTextbox.Text + "' AND `password` = '" + pw + "'").Count == 0){
-                StatusLabel.Text = "Invalid Credentials";
-                return;
-            }
-
-
-            //Authenticated Successfully
-            MainWindow m = new MainWindow(EmailTextbox.Text);
-            App.Current.MainWindow = m;
-            this.Close();
-            m.Show();
+            loginUser(EmailTextbox.Text, PasswordBox.Password);
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -94,5 +63,53 @@ namespace OffCampusHousingDatabase
         {
             SignupTextblock.TextDecorations = null;
         }
+
+        #endregion
+
+        #region Logic
+
+        private void loginUser(String email, String password)
+        {
+            //First validate to make sure all of the fields are filled with some information
+            if (email.Equals(""))
+            {
+                StatusLabel.Text = "Email cannot be empty, please enter valid email";
+                return;
+            }
+            else if (!email.Contains("@"))
+            {
+                StatusLabel.Text = "Invalid Email Address";
+                return;
+            }
+            else if (email.Contains(" "))
+            {
+                StatusLabel.Text = "Emails cannot contain any spaces";
+                return;
+            }
+            else if (password.Length < 6)
+            {
+                StatusLabel.Text = "Password must be at least 6 characters";
+                return;
+            }
+
+            String pw = ((Int32)password.GetHashCode()).ToString();
+
+            if (dbHelper.DatabaseSelect("User", "`email` = '" + email + "' AND `password` = '" + pw + "'").Count == 0)
+            {
+                StatusLabel.Text = "Invalid Credentials";
+                return;
+            }
+
+
+            //Authenticated Successfully
+            MainWindow m = new MainWindow(email);
+            App.Current.MainWindow = m;
+            this.Close();
+            m.Show();
+        }
+
+
+        #endregion
+
     }
 }
