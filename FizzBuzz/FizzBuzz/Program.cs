@@ -31,6 +31,8 @@ namespace FizzBuzz
             System.Console.WriteLine("END");
 
             System.Console.WriteLine("cs");
+
+            System.Console.Write(".");
         }
     }
 }
