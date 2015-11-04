@@ -61,7 +61,7 @@ namespace OffCampusHousingDatabase
             catch (Exception ex)
             {
                 ErrorLogger el = new ErrorLogger();
-                el.LogError("DatabaseHelper : DatabaseSelect", ex.Message);
+                el.logError("DatabaseHelper : DatabaseSelect", ex.Message);
                 return new ArrayList();
             }
         }
@@ -127,7 +127,7 @@ namespace OffCampusHousingDatabase
             catch (Exception ex)
             {
                 ErrorLogger el = new ErrorLogger();
-                el.LogError("DatabaseHelper : DatabaseSelect", ex.Message);
+                el.logError("DatabaseHelper : DatabaseSelect", ex.Message);
                 return new ArrayList();
             }
         }
@@ -155,7 +155,7 @@ namespace OffCampusHousingDatabase
             catch (Exception ex)
             {
                 ErrorLogger el = new ErrorLogger();
-                el.LogError("DatabaseHelper : DatabaseInsertImage", ex.Message);
+                el.logError("DatabaseHelper : DatabaseInsertImage", ex.Message);
                 return false;
             }
         }

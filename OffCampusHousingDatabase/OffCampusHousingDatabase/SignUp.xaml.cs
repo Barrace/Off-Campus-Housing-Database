@@ -34,7 +34,7 @@ namespace OffCampusHousingDatabase
 
         private void signup_Click(object sender, RoutedEventArgs e)
         {
-            signupUser(emailTextbox.Text, passwordBox.Password, passwordConfirmBox.Password, ManagerRadioButton.IsChecked());
+            StatusLabel.Text = signupUser(emailTextbox.Text, passwordBox.Password, passwordConfirmBox.Password, (bool)ManagerRadioButton.IsChecked);
         }
 
         private void cancel_Click(object sender, RoutedEventArgs e)
@@ -68,38 +68,33 @@ namespace OffCampusHousingDatabase
 
         #region Logic
 
-        private void signupUser(String email, String password1, String password2, bool isManager)
+        private String signupUser(String email, String password1, String password2, bool isManager)
         {
             //First validate to make sure all of the fields are filled with some information
             if (email.Equals(""))
             {
-                StatusLabel.Text = "Email cannot be empty, please enter valid email";
-                return;
+                return "Email cannot be empty, please enter valid email";
             }
             else if (!email.Contains("@"))
             {
-                StatusLabel.Text = "Invalid Email Address";
-                return;
+                return "Invalid Email Address";
             }
             else if (email.Contains(" "))
             {
-                StatusLabel.Text = "Emails cannot contain any spaces";
-                return;
+                return "Emails cannot contain any spaces";
+                
             }
             else if (password1.Length < 6)
             {
-                StatusLabel.Text = "Password must be at least 6 characters";
-                return;
+                return "Password must be at least 6 characters";
             }
             else if (!password1.Equals(password2))
             {
-                StatusLabel.Text = "Password Confirmation does not match Password";
-                return;
+                return "Password Confirmation does not match Password";
             }
             else if (!((bool)StudentRadioButton.IsChecked || (bool)ManagerRadioButton.IsChecked))
             {
-                StatusLabel.Text = "Please select your account status (Student / Manager)";
-                return;
+                return "Please select your account status (Student / Manager)";
             }
 
             //if you reach here you have passed all of the input checks, you can now validate 
@@ -109,8 +104,7 @@ namespace OffCampusHousingDatabase
                 //Check the uniqueness of the user email
                 if (dbHelper.DatabaseSelect("User", "`email` = '" + email + "'").Count > 0)
                 {
-                    StatusLabel.Text = "This email is already in use, please log in, or use a different email";
-                    return;
+                    return "This email is already in use, please log in, or use a different email";
                 }
 
                 //Hash user password to encrypt it
@@ -122,20 +116,17 @@ namespace OffCampusHousingDatabase
                 //Insert the email and user info
                 if (dbHelper.DatabaseInsert("User", "`email`, `password`, `isManager`", "'" + email + "','" + pw + "','" + isManagerBit + "'"))
                 {
-
                     //successfully inserted, switch views and update the global user email variable
                     MainWindow m = new MainWindow(email);
                     App.Current.MainWindow = m;
                     this.Close();
                     m.Show();
-
-
                 }
-
+                return "";
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Database Error");
+                return "Database Error: " + ex.Message;
             }
         }
 

@@ -34,7 +34,7 @@ namespace OffCampusHousingDatabase
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            loginUser(EmailTextbox.Text, PasswordBox.Password);
+            StatusLabel.Text = loginUser(EmailTextbox.Text, PasswordBox.Password);
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -68,44 +68,42 @@ namespace OffCampusHousingDatabase
 
         #region Logic
 
-        private void loginUser(String email, String password)
+        private String loginUser(String email, String password)
         {
             //First validate to make sure all of the fields are filled with some information
             if (email.Equals(""))
             {
-                StatusLabel.Text = "Email cannot be empty, please enter valid email";
-                return;
+                return "Email cannot be empty, please enter valid email";
             }
             else if (!email.Contains("@"))
             {
-                StatusLabel.Text = "Invalid Email Address";
-                return;
+                return "Invalid Email Address";
             }
             else if (email.Contains(" "))
             {
-                StatusLabel.Text = "Emails cannot contain any spaces";
-                return;
+                return "Emails cannot contain any spaces";
             }
             else if (password.Length < 6)
             {
-                StatusLabel.Text = "Password must be at least 6 characters";
-                return;
+                return "Password must be at least 6 characters";
             }
 
             String pw = ((Int32)password.GetHashCode()).ToString();
 
             if (dbHelper.DatabaseSelect("User", "`email` = '" + email + "' AND `password` = '" + pw + "'").Count == 0)
             {
-                StatusLabel.Text = "Invalid Credentials";
-                return;
+                return "Invalid Credentials";
             }
 
+            //Authenticated Successfully at this point
 
-            //Authenticated Successfully
             MainWindow m = new MainWindow(email);
             App.Current.MainWindow = m;
             this.Close();
             m.Show();
+
+            //No errors, return an empty error message
+            return "";
         }
 
 
