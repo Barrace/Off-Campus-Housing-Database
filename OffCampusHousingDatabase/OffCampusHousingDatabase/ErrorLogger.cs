@@ -12,7 +12,7 @@ namespace OffCampusHousingDatabase
         public void logError(String sender, String description)
         {
             DatabaseHelper dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
-            dbHelper.DatabaseInsert("ErrorLogs", "`Sender`,`Description`", "'" + sender + "','" + description.Replace("'","") + "'");
+            dbHelper.databaseInsert("ErrorLogs", "`Sender`,`Description`", "'" + sender + "','" + description.Replace("'","") + "'");
         }
     }
 }

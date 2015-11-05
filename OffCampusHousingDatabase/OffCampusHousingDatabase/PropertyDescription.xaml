@@ -7,14 +7,12 @@
 
         <Label Content="Address:" HorizontalAlignment="Left" Margin="167,79,0,0" VerticalAlignment="Top"/>
         <Label Content="Description:" HorizontalAlignment="Left" Margin="167,130,0,0" VerticalAlignment="Top"/>
-        <Label Content="Monthly Rent:" HorizontalAlignment="Left" Margin="167,201,0,0" VerticalAlignment="Top"/>
-        <Label Content="Real Data:" HorizontalAlignment="Left" Margin="167,227,0,0" VerticalAlignment="Top"/>
+        <Label Content="Monthly Rent:" HorizontalAlignment="Left" Margin="167,227,0,0" VerticalAlignment="Top"/>
 
         <TextBlock x:Name="AddrTextBlock" HorizontalAlignment="Left" Margin="239,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="42" Width="115"/>
-        <TextBlock x:Name="DesTextBlock" HorizontalAlignment="Left" Margin="245,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="61" Width="184"/>
-        <TextBlock x:Name="RentTextBlock" HorizontalAlignment="Left" Margin="256,206,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" Width="98"/>
-        <TextBlock x:Name="RealTextBlock" HorizontalAlignment="Left" Margin="239,232,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" Width="115"/>
-        
+        <TextBlock x:Name="DesTextBlock" HorizontalAlignment="Left" Margin="245,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="92" Width="269"/>
+        <TextBlock x:Name="RentTextBlock" HorizontalAlignment="Left" Margin="256,232,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" Width="98"/>
+
         <Button Content="go back" HorizontalAlignment="Left" Margin="31,79,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
 

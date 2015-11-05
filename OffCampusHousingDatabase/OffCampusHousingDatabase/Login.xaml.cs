@@ -90,7 +90,7 @@ namespace OffCampusHousingDatabase
 
             String pw = ((Int32)password.GetHashCode()).ToString();
 
-            if (dbHelper.DatabaseSelect("User", "`email` = '" + email + "' AND `password` = '" + pw + "'").Count == 0)
+            if (dbHelper.databaseSelect("User", "`email` = '" + email + "' AND `password` = '" + pw + "'").Count == 0)
             {
                 return "Invalid Credentials";
             }

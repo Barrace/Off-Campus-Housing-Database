@@ -37,11 +37,10 @@ namespace OffCampusHousingDatabase
 
         public void loadProperty()
         {
-            String[] row = dbHelper.DatabaseSelectFirst("Property", "`PropertyID` = '" + ID + "'");
-            AddrTextBlock.Text = row[1];
-            DesTextBlock.Text = row[2];
-            RentTextBlock.Text = row[4];
-            RealTextBlock.Text = row[5];
+            String[] row = dbHelper.databaseSelectFirst("Property", "`PropertyID` = '" + ID + "'");
+            AddrTextBlock.Text = row[2];
+            DesTextBlock.Text = row[3];
+            RentTextBlock.Text = row[5];
 
         }
 

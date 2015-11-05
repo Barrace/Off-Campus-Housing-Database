@@ -46,9 +46,12 @@ namespace OffCampusHousingDatabase
             dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
 
             //Show on the UI that the user is logged on, and hide the Login, Or, and Signup textblocks
-            LoginTextblock.Text = email;
+            LoginTextblock.Text = "";
             OrTextblock.Text = "";
             SignupTextblock.Text = "";
+
+            //Display user email on page
+            UserEmailTextBlock.Text = email;
 
             loadProperties();
 
@@ -88,6 +91,23 @@ namespace OffCampusHousingDatabase
         private void signup_MouseLeave(object sender, MouseEventArgs e)
         {
             SignupTextblock.TextDecorations = null;
+        }
+
+        private void Email_MouseEnter(object sender, MouseEventArgs e)
+        {
+            UserEmailTextBlock.TextDecorations = TextDecorations.Underline;
+        }
+
+        private void Email_MouseLeave(object sender, MouseEventArgs e)
+        {
+            UserEmailTextBlock.TextDecorations = null;
+        }
+
+        private void Email_MouseDown(object sender, MouseEventArgs e)
+        {
+            //Add code that will transition to the user's profile page
+
+
         }
 
         private void Property_Click(object sender, MouseButtonEventArgs e)
@@ -140,14 +160,14 @@ namespace OffCampusHousingDatabase
                 //}
 
 
-                bool ex = dbHelper.DatabaseInsertImage("Image", "202", ImageData);
+                bool ex = dbHelper.databaseInsertImage("Image", "202", ImageData);
                 MessageBox.Show("");
             }
         }
 
         public void ViewImageButton_Click(object sender, RoutedEventArgs e)
         {
-            ArrayList rows = dbHelper.DatabaseSelectImage("Image");
+            ArrayList rows = dbHelper.databaseSelectImage("Image");
             foreach (Object[] row in rows)
             {
 
@@ -192,11 +212,11 @@ namespace OffCampusHousingDatabase
 
             PropertyListView.Items.Clear();
 
-            ArrayList rows = dbHelper.DatabaseSelect("Property", whereClause.ToString());
+            ArrayList rows = dbHelper.databaseSelect("Property", whereClause.ToString());
 
             foreach (String[] row in rows)
             {
-                PropertyListView.Items.Add(new PropertyItem { PropID = Convert.ToInt32(row[0]), Addr = row[2], Rent = Convert.ToInt32(row[5]), RealData = Convert.ToInt32(row[8]) });
+                PropertyListView.Items.Add(new PropertyItem { PropID = Convert.ToInt32(row[0]), Addr = row[2], Rent = Convert.ToInt32(row[5]), NumberOfRooms = Convert.ToInt32(row[4]) });
             }
 
         }
@@ -207,8 +227,10 @@ namespace OffCampusHousingDatabase
             public int PropID { get; set; }
             public string Addr { get; set; }
             public int Rent { get; set; }
-            public int RealData { get; set; }
+            public int NumberOfRooms { get; set; }
         }
+
+        
 
         
     }

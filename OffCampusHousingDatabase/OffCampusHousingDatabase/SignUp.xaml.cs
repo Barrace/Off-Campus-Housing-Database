@@ -102,7 +102,7 @@ namespace OffCampusHousingDatabase
             try
             {
                 //Check the uniqueness of the user email
-                if (dbHelper.DatabaseSelect("User", "`email` = '" + email + "'").Count > 0)
+                if (dbHelper.databaseSelect("User", "`email` = '" + email + "'").Count > 0)
                 {
                     return "This email is already in use, please log in, or use a different email";
                 }
@@ -114,7 +114,7 @@ namespace OffCampusHousingDatabase
                     isManagerBit = 1;
 
                 //Insert the email and user info
-                if (dbHelper.DatabaseInsert("User", "`email`, `password`, `isManager`", "'" + email + "','" + pw + "','" + isManagerBit + "'"))
+                if (dbHelper.databaseInsert("User", "`email`, `password`, `isManager`", "'" + email + "','" + pw + "','" + isManagerBit + "'"))
                 {
                     //successfully inserted, switch views and update the global user email variable
                     MainWindow m = new MainWindow(email);
