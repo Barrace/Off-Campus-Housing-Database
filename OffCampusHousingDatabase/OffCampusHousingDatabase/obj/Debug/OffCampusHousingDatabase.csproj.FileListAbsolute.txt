@@ -26,3 +26,6 @@ C:\Users\Max\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousin
 C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\bin\Debug\OffCampusHousingDatabase.exe.config
 C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.exe
 C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.pdb
+C:\Users\lab\Desktop\New folder\OffCampusHousingDatabase\OffCampusHousingDatabase\bin\Debug\OffCampusHousingDatabase.exe.config
+C:\Users\lab\Desktop\New folder\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.exe
+C:\Users\lab\Desktop\New folder\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.pdb
