@@ -26,21 +26,6 @@ C:\Users\Max\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousin
 C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\bin\Debug\OffCampusHousingDatabase.exe.config
 C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.exe
 C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.pdb
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\bin\Debug\OffCampusHousingDatabase.exe
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\bin\Debug\OffCampusHousingDatabase.pdb
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.csprojResolveAssemblyReference.cache
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\Login.baml
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\MainWindow.baml
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\PropertyDescription.baml
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\SignUp.baml
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\UserWindow.baml
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\Login.g.cs
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\MainWindow.g.cs
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\PropertyDescription.g.cs
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\SignUp.g.cs
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\UserWindow.g.cs
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\App.g.cs
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase_MarkupCompile.cache
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.g.resources
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.Properties.Resources.resources
-C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.csproj.GenerateResource.Cache
+C:\Users\lab\Desktop\New folder\OffCampusHousingDatabase\OffCampusHousingDatabase\bin\Debug\OffCampusHousingDatabase.exe.config
+C:\Users\lab\Desktop\New folder\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.exe
+C:\Users\lab\Desktop\New folder\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.pdb

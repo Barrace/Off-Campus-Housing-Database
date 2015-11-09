@@ -17,199 +17,245 @@ using System.Configuration;
 
 namespace OffCampusHousingDatabase
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        bool loggedOn;
-        String email;
-        DatabaseHelper dbHelper;
+   /// <summary>
+   /// Interaction logic for MainWindow.xaml
+   /// </summary>
+   public partial class MainWindow : Window
+   {
+      #region Variables
 
-        public MainWindow()
-        {
-            InitializeComponent();
-            loggedOn = false;
-            email = "";
+      bool loggedOn;
+      String email;
+      DatabaseHelper dbHelper;
 
-            dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
+      #endregion
 
-            loadProperties();
-        }
 
-        public MainWindow(String email)
-        {
-            InitializeComponent();
-            loggedOn = true;
-            this.email = email;
+      #region Listeners
+      public MainWindow()
+      {
+         InitializeComponent();
+         loggedOn = false;
+         email = "";
 
-            dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
+         dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
 
-            //Show on the UI that the user is logged on, and hide the Login, Or, and Signup textblocks
-            LoginTextblock.Text = email;
-            OrTextblock.Text = "";
-            SignupTextblock.Text = "";
+         loadProperties();
+      }
 
-            loadProperties();
+      public MainWindow(String email)
+      {
+         InitializeComponent();
+         loggedOn = true;
+         this.email = email;
 
-        }
+         dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
 
-        private void login_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Login l = new Login();
-            App.Current.MainWindow = l;
-            this.Close();
-            l.Show();
-        }
+         //Show on the UI that the user is logged on, and hide the Login, Or, and Signup textblocks
+         loginTextblock.Text = "";
+         OrTextblock.Text = "";
+         signupTextblock.Text = "";
 
-        private void login_MouseEnter(object sender, MouseEventArgs e)
-        {
-            LoginTextblock.TextDecorations = TextDecorations.Underline;
-        }
+         //Display user email on page
+         userEmailTextBlock.Text = email;
 
-        private void login_MouseLeave(object sender, MouseEventArgs e)
-        {
-            LoginTextblock.TextDecorations = null;
-        }
+         loadProperties();
 
-        private void signup_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            SignUp sign = new SignUp();
-            App.Current.MainWindow = sign;
-            this.Close();
-            sign.Show();
-        }
+      }
 
-        private void signup_MouseEnter(object sender, MouseEventArgs e)
-        {
-            SignupTextblock.TextDecorations = TextDecorations.Underline;
-        }
+      private void loginMouseDown(object sender, MouseButtonEventArgs e)
+      {
+         Login l = new Login();
+         App.Current.MainWindow = l;
+         this.Close();
+         l.Show();
+      }
 
-        private void signup_MouseLeave(object sender, MouseEventArgs e)
-        {
-            SignupTextblock.TextDecorations = null;
-        }
+      private void loginMouseEnter(object sender, MouseEventArgs e)
+      {
+         loginTextblock.TextDecorations = TextDecorations.Underline;
+      }
 
-        private void Property_Click(object sender, MouseButtonEventArgs e)
-        {
-            if (PropertyListView.SelectedIndex < 0)
-                return;
+      private void loginMouseLeave(object sender, MouseEventArgs e)
+      {
+         loginTextblock.TextDecorations = null;
+      }
 
-            PropertyItem n = (PropertyItem)PropertyListView.SelectedItem;
+      private void signupMouseDown(object sender, MouseButtonEventArgs e)
+      {
+         SignUp sign = new SignUp();
+         App.Current.MainWindow = sign;
+         this.Close();
+         sign.Show();
+      }
 
-            PropertyDescription pd = new PropertyDescription(n.PropID);
-            pd.setEmail(this.email);
-            App.Current.MainWindow = pd;
-            pd.Show();
-            this.Close();
-        }
+      private void signupMouseEnter(object sender, MouseEventArgs e)
+      {
+         signupTextblock.TextDecorations = TextDecorations.Underline;
+      }
 
-        private void FilterButton_Click(object sender, RoutedEventArgs e)
-        {
-            loadProperties();
-        }
+      private void signupMouseLeave(object sender, MouseEventArgs e)
+      {
+         signupTextblock.TextDecorations = null;
+      }
 
-        public void UploadImageButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Create OpenFileDialog
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+      private void emailMouseEnter(object sender, MouseEventArgs e)
+      {
+         userEmailTextBlock.TextDecorations = TextDecorations.Underline;
+      }
 
-            // Set filter for file extension and default file extension
-            dlg.DefaultExt = ".png";
-            dlg.Filter = "Images (.png)|*.png";
+      private void emailMouseLeave(object sender, MouseEventArgs e)
+      {
+         userEmailTextBlock.TextDecorations = null;
+      }
 
-            // Display OpenFileDialog by calling ShowDialog method
-            Nullable<bool> result = dlg.ShowDialog();
+      private void emailMouseDown(object sender, MouseEventArgs e)
+      {
+         //Add code that will transition to the user's profile page
 
-            // Get the selected file name and display in a TextBox
-            if (result == true)
+
+      }
+
+      private void propertyClick(object sender, MouseButtonEventArgs e)
+      {
+         if (propertyListView.SelectedIndex < 0)
+            return;
+
+         PropertyItem n = (PropertyItem)propertyListView.SelectedItem;
+
+         PropertyDescription pd = new PropertyDescription(n.PropID);
+         pd.setEmail(this.email);
+         App.Current.MainWindow = pd;
+         pd.Show();
+         this.Close();
+      }
+
+      private void filterButtonClick(object sender, RoutedEventArgs e)
+      {
+         loadProperties();
+      }
+
+      public void uploadImageButtonClick(object sender, RoutedEventArgs e)
+      {
+         // Create OpenFileDialog
+         Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+         // Set filter for file extension and default file extension
+         dlg.DefaultExt = ".png";
+         dlg.Filter = "Images (.png)|*.png";
+
+         // Display OpenFileDialog by calling ShowDialog method
+         Nullable<bool> result = dlg.ShowDialog();
+
+         // Get the selected file name and display in a TextBox
+         if (result == true)
+         {
+            FileStream fs;
+            BinaryReader br;
+
+            string FileName = dlg.FileName;
+            byte[] ImageData;
+            fs = new FileStream(FileName, FileMode.Open, FileAccess.Read);
+            br = new BinaryReader(fs);
+            ImageData = br.ReadBytes((int)fs.Length);
+
+            //StringBuilder sb = new StringBuilder();
+            //foreach (byte b in ImageData)
+            //{
+            //    sb.Append(b.ToString() + ",");
+            //}
+
+
+            bool ex = dbHelper.databaseInsertImage("Image", "202", ImageData);
+            MessageBox.Show("");
+         }
+      }
+
+      public void viewImageButtonClick(object sender, RoutedEventArgs e)
+      {
+         ArrayList rows = dbHelper.databaseSelectImage("Image");
+         foreach (Object[] row in rows)
+         {
+            byte[] arr = (byte[])row[2];
+            MessageBox.Show(arr.ToString());
+         }
+      }
+
+      #endregion
+
+
+      #region Logic
+      private void loadProperties()
+      {
+         //go through filters and see if any need to be added
+         StringBuilder whereClause = new StringBuilder();
+         bool andNeeded = false;
+
+
+         //iterate through all of the different filter controls
+         if (filterRentTextbox.Text != "")
+         {
+            whereClause.Append("`MonthlyRent` < " + filterRentTextbox.Text);
+            andNeeded = true;
+         }
+
+         if(false)
+         {
+            if (andNeeded)
             {
-                FileStream fs;
-                BinaryReader br;
-
-                string FileName = dlg.FileName;
-                byte[] ImageData;
-                fs = new FileStream(FileName, FileMode.Open, FileAccess.Read);
-                br = new BinaryReader(fs);
-                ImageData = br.ReadBytes((int)fs.Length);
-
-                //StringBuilder sb = new StringBuilder();
-                //foreach (byte b in ImageData)
-                //{
-                //    sb.Append(b.ToString() + ",");
-                //}
-
-
-                bool ex = dbHelper.DatabaseInsertImage("Image", "202", ImageData);
-                MessageBox.Show("");
+               whereClause.Append(" and " + "");
             }
-        }
-
-        public void ViewImageButton_Click(object sender, RoutedEventArgs e)
-        {
-            ArrayList rows = dbHelper.DatabaseSelectImage("Image");
-            foreach (Object[] row in rows)
+            else
             {
-
-                byte[] arr = (byte[])row[2];
-                MessageBox.Show(arr.ToString());
+               whereClause.Append("");
+               andNeeded = true;
             }
-        }
 
-        private void loadProperties()
-        {
-            //go through filters and see if any need to be added
-            StringBuilder whereClause = new StringBuilder();
-            bool andNeeded = false;
+         }
 
+         //doesn't work when both are filtered together
+         if (filterRoomTextbox.Text != "")
+         {
+               whereClause.Append("`NumberOfRooms` > " + filterRoomTextbox.Text);
+               andNeeded = true;
+         }
 
-            //iterate through all of the different filter controls
-            if (FilterRentTextbox.Text != "")
+         if (false)
+         {
+            if (andNeeded)
             {
-                whereClause.Append("`MonthlyRent` < " + FilterRentTextbox.Text);
-                andNeeded = true;
+               whereClause.Append(" and " + "");
             }
-
-            if(false)
+            else
             {
-                if (andNeeded)
-                {
-                    whereClause.Append(" and " + "");
-                }
-                else
-                {
-                    whereClause.Append("");
-                    andNeeded = true;
-                }
-
+               whereClause.Append("");
+               andNeeded = true;
             }
+         }
 
 
 
+         propertyListView.Items.Clear();
+
+         ArrayList rows = dbHelper.databaseSelect("Property", whereClause.ToString());
+
+         foreach (String[] row in rows)
+         {
+            propertyListView.Items.Add(new PropertyItem { PropID = Convert.ToInt32(row[0]), Addr = row[2], Rent = Convert.ToInt32(row[5]), NumberOfRooms = Convert.ToInt32(row[4]) });
+         }
+
+      }
+
+      private class PropertyItem
+      {
+         public int PropID { get; set; }
+         public string Addr { get; set; }
+         public int Rent { get; set; }
+         public int NumberOfRooms { get; set; }
+      }
+
+      #endregion
 
 
-
-
-            PropertyListView.Items.Clear();
-
-            ArrayList rows = dbHelper.DatabaseSelect("Property", whereClause.ToString());
-
-            foreach (String[] row in rows)
-            {
-                PropertyListView.Items.Add(new PropertyItem { PropID = Convert.ToInt32(row[0]), Addr = row[2], Rent = Convert.ToInt32(row[5]), RealData = Convert.ToInt32(row[8]) });
-            }
-
-        }
-
-
-        private class PropertyItem
-        {
-            public int PropID { get; set; }
-            public string Addr { get; set; }
-            public int Rent { get; set; }
-            public int RealData { get; set; }
-        }
-
-        
-    }
+   }
 }

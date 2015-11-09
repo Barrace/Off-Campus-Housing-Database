@@ -16,12 +16,12 @@ namespace OffCampusHousingDatabase
             this.connectionString = connectionString;
         }
 
-        public ArrayList DatabaseSelectImage(String tableName)
+        public ArrayList databaseSelectImage(String tableName)
         {
-            return DatabaseSelectImage(tableName, "");
+            return databaseSelectImage(tableName, "");
         }
 
-        public ArrayList DatabaseSelectImage(String tableName, String whereClause)
+        public ArrayList databaseSelectImage(String tableName, String whereClause)
         {
             try
             {
@@ -61,33 +61,33 @@ namespace OffCampusHousingDatabase
             catch (Exception ex)
             {
                 ErrorLogger el = new ErrorLogger();
-                el.LogError("DatabaseHelper : DatabaseSelect", ex.Message);
+                el.logError("DatabaseHelper : databaseSelect", ex.Message);
                 return new ArrayList();
             }
         }
 
 
-        public String[] DatabaseSelectFirst(String tableName)
+        public String[] databaseSelectFirst(String tableName)
         {
-            return DatabaseSelectFirst(tableName, "");
+            return databaseSelectFirst(tableName, "");
         }
 
-        public String[] DatabaseSelectFirst(String tableName, String whereClause)
+        public String[] databaseSelectFirst(String tableName, String whereClause)
         {
-            ArrayList arr = DatabaseSelect(tableName, whereClause);
+            ArrayList arr = databaseSelect(tableName, whereClause);
             foreach(String[] row in arr){
                 return row;
             }
             return null;
         }
 
-        public ArrayList DatabaseSelect(String tableName)
+        public ArrayList databaseSelect(String tableName)
         {
-            return DatabaseSelect(tableName, "");
+            return databaseSelect(tableName, "");
         }
 
         //Sample Call: ArrayList arr = dbHelper.DatabaseSelect("User", "`email` = '" + EmailTextbox.Text + "' AND `password` = '" + pw + "'");
-        public ArrayList DatabaseSelect(String tableName, String whereClause)
+        public ArrayList databaseSelect(String tableName, String whereClause)
         {
             try
             {
@@ -127,13 +127,13 @@ namespace OffCampusHousingDatabase
             catch (Exception ex)
             {
                 ErrorLogger el = new ErrorLogger();
-                el.LogError("DatabaseHelper : DatabaseSelect", ex.Message);
+                el.logError("DatabaseHelper : databaseSelect", ex.Message);
                 return new ArrayList();
             }
         }
 
 
-        public bool DatabaseInsertImage(String tableName, String PropertyID, byte[] arr)
+        public bool databaseInsertImage(String tableName, String PropertyID, byte[] arr)
         {
             try
             {
@@ -155,12 +155,12 @@ namespace OffCampusHousingDatabase
             catch (Exception ex)
             {
                 ErrorLogger el = new ErrorLogger();
-                el.LogError("DatabaseHelper : DatabaseInsertImage", ex.Message);
+                el.logError("DatabaseHelper : databaseInsertImage", ex.Message);
                 return false;
             }
         }
 
-        public bool DatabaseInsert(String tableName, String Columns, String Values)
+        public bool databaseInsert(String tableName, String Columns, String Values)
         {
             try
             {
@@ -177,11 +177,13 @@ namespace OffCampusHousingDatabase
             }
             catch (Exception ex)
             {
+                ErrorLogger el = new ErrorLogger();
+                el.logError("DatabaseHelper : databaseInsert", ex.Message);
                 return false;
             }
         }
 
-        public bool DatabaseUpdate(String tableName, String updateColumns, String whereClause)
+        public bool databaseUpdate(String tableName, String updateColumns, String whereClause)
         {
             try
             {
@@ -198,11 +200,13 @@ namespace OffCampusHousingDatabase
             }
             catch (Exception ex)
             {
+                ErrorLogger el = new ErrorLogger();
+                el.logError("DatabaseHelper : databaseUpdate", ex.Message);
                 return false;
             }
         }
 
-        private bool DatabaseDelete(String tableName, String whereClause)
+        private bool databaseDelete(String tableName, String whereClause)
         {
             try
             {
@@ -219,6 +223,8 @@ namespace OffCampusHousingDatabase
             }
             catch (Exception ex)
             {
+                ErrorLogger el = new ErrorLogger();
+                el.logError("DatabaseHelper : databaseDelete", ex.Message);
                 return false;
             }
         }
