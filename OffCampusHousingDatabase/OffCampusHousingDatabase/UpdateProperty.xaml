@@ -19,7 +19,7 @@
         <TextBox x:Name="roomsAvailableTextbox" HorizontalAlignment="Left" Height="23" Margin="381,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67"/>
         <Button x:Name="submit" Content="Update" HorizontalAlignment="Left" Margin="381,284,0,0" VerticalAlignment="Top" Width="75" Click="submit_Click"/>
         <TextBlock x:Name="statusLabel" HorizontalAlignment="Left" Margin="381,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.796,-0.562" Height="70" Width="296"/>
-        <Button Content="Back" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="75" Click="goBack_Click"/>
 
 
 
