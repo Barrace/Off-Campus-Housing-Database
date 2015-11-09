@@ -20,10 +20,16 @@ namespace OffCampusHousingDatabase
     /// </summary>
     public partial class PropertyDescription : Window
     {
+        #region Variables
+
         DatabaseHelper dbHelper;
 
         int ID;
         String email = "";
+
+        #endregion
+
+        #region Listeners
 
         public PropertyDescription(int propertyID)
         {
@@ -34,15 +40,8 @@ namespace OffCampusHousingDatabase
 
             loadProperty();
             loadComments();
-        }
-
-        public void loadProperty()
-        {
-            String[] row = dbHelper.databaseSelectFirst("Property", "`PropertyID` = '" + ID + "'");
-            AddrTextBlock.Text = row[2];
-            DesTextBlock.Text = row[3];
-            RentTextBlock.Text = row[5];
-
+            loadImages();
+            loadRatings();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -61,9 +60,22 @@ namespace OffCampusHousingDatabase
             m.Show();
         }
 
+        #endregion
+
+        #region Logic
+
         public void setEmail(String email)
         {
             this.email = email;
+        }
+
+        public void loadProperty()
+        {
+            String[] row = dbHelper.databaseSelectFirst("Property", "`PropertyID` = '" + ID + "'");
+            AddrTextBlock.Text = row[2];
+            DesTextBlock.Text = row[3];
+            RentTextBlock.Text = row[5];
+
         }
 
         public void loadComments()
@@ -78,6 +90,30 @@ namespace OffCampusHousingDatabase
             }
         }
 
+        public void loadImages()
+        {
+
+        }
+
+        public void loadRatings()
+        {
+            int ratingCount = 0;
+            int totalRating = 0;
+            double averageRating = 0.0;
+
+            ArrayList rows = dbHelper.databaseSelect("Rating");
+
+            foreach (String[] row in rows)
+            {
+                totalRating += Int32.Parse(row[3]);
+                ratingCount++;
+            }
+
+            //averageRating = (totalRating / ratingCount);
+
+            AverageRatingBlock.Text = averageRating.ToString() ;
+        }
+
         private class Comment
         {
             public int CommentID { get; set; }
@@ -85,5 +121,23 @@ namespace OffCampusHousingDatabase
             public int PropID { get; set; }
             public string comment { get; set; }
         }
+
+        private class Image
+        {
+            public int ImageID { get; set; }
+            public int PropID { get; set; }
+            public string image { get; set; }
+            public Boolean isThumnail { get; set; }
+        }
+
+        private class Rating
+        {
+            public int RatingID { get; set; }
+            public string UserEmail { get; set; }
+            public int PropID { get; set; }
+            public int rating { get; set; }
+        }
+
+        #endregion
     }
 }

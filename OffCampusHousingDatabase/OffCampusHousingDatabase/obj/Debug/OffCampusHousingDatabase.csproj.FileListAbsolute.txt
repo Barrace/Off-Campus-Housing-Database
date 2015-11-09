@@ -93,3 +93,5 @@ C:\Users\lab\Source\Repos\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDat
 C:\Users\lab\Source\Repos\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.csproj.GenerateResource.Cache
 C:\Users\lab\Source\Repos\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\bin\Debug\OffCampusHousingDatabase.exe
 C:\Users\lab\Source\Repos\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\bin\Debug\OffCampusHousingDatabase.pdb
+C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\UpdateProperty.baml
+C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\UpdateProperty.g.cs
