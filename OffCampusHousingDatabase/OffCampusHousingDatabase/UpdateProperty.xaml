@@ -9,18 +9,17 @@
         <Label Content="Description:" HorizontalAlignment="Left" Margin="281,110,0,0" VerticalAlignment="Top"/>
         <Label Content="Monthly Rent:" HorizontalAlignment="Left" Margin="281,184,0,0" VerticalAlignment="Top"/>
         <Label Content="Rooms Available:" HorizontalAlignment="Left" Margin="281,216,0,0" VerticalAlignment="Top"/>
-
-        <Button x:Name="goBack" Content="go back" HorizontalAlignment="Left" Margin="704,64,0,0" VerticalAlignment="Top" Width="75" Click="goBack_Click"/>
-        <Image HorizontalAlignment="Left" Height="151" Margin="60,79,0,0" VerticalAlignment="Top" Width="153"/>
+        <Image HorizontalAlignment="Left" Height="151" Margin="59,107,0,0" VerticalAlignment="Top" Width="153"/>
         <TextBlock HorizontalAlignment="Left" Margin="164,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.347,-0.938"/>
-        <Button x:Name="addPhoto" Content="Add Photo" HorizontalAlignment="Left" Margin="99,248,0,0" VerticalAlignment="Top" Width="75" Click="addPhoto_Click"/>
-        <Button x:Name="removePhoto" Content="Remove Photo" HorizontalAlignment="Left" Margin="89,284,0,0" VerticalAlignment="Top" Width="95" Click="removePhoto_Click"/>
+        <Button x:Name="addPhoto" Content="Add Photo" HorizontalAlignment="Left" Margin="99,269,0,0" VerticalAlignment="Top" Width="75" Click="addPhoto_Click"/>
+        <Button x:Name="removePhoto" Content="Remove Photo" HorizontalAlignment="Left" Margin="88,306,0,0" VerticalAlignment="Top" Width="95" Click="removePhoto_Click"/>
         <TextBox x:Name="addressTextbox" HorizontalAlignment="Left" Height="39" Margin="381,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
         <TextBox x:Name="descriptionTextbox" HorizontalAlignment="Left" Height="70" Margin="381,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205"/>
         <TextBox x:Name="monthlyRentTextbox" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Margin="381,189,0,0"/>
         <TextBox x:Name="roomsAvailableTextbox" HorizontalAlignment="Left" Height="23" Margin="381,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67"/>
         <Button x:Name="submit" Content="Update" HorizontalAlignment="Left" Margin="381,284,0,0" VerticalAlignment="Top" Width="75" Click="submit_Click"/>
         <TextBlock x:Name="statusLabel" HorizontalAlignment="Left" Margin="381,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.796,-0.562" Height="70" Width="296"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
 
 

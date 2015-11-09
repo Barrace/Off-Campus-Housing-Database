@@ -13,22 +13,22 @@
         <TextBlock x:Name="DesTextBlock" HorizontalAlignment="Left" Margin="368,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="65" Width="215"/>
         <TextBlock x:Name="RentTextBlock" HorizontalAlignment="Left" Margin="394,189,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" Width="98"/>
 
-        <Button Content="go back" HorizontalAlignment="Left" Margin="704,64,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Image HorizontalAlignment="Left" Height="151" Margin="60,79,0,0" VerticalAlignment="Top" Width="153"/>
-        <ListView x:Name="commentListView" HorizontalAlignment="Left" Height="119" Margin="281,224,0,0" VerticalAlignment="Top" Width="432">
+        <Button Content="Back" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Image HorizontalAlignment="Left" Height="151" Margin="60,102,0,0" VerticalAlignment="Top" Width="153"/>
+        <ListView x:Name="commentListView" HorizontalAlignment="Left" Height="119" Margin="281,224,0,0" VerticalAlignment="Top" Width="498">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="User ID" DisplayMemberBinding="{Binding Addr}" Width="175"/>
-                    <GridViewColumn Header="Comment" DisplayMemberBinding="{Binding Rent}" Width="100"/>
+                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Addr}" Width="175"/>
+                    <GridViewColumn Header="Comment" DisplayMemberBinding="{Binding Rent}" Width="323"/>
                 </GridView>
             </ListView.View>
         </ListView>
         <TextBox x:Name="TypeCommentBox" HorizontalAlignment="Left" Height="37" Margin="281,357,0,0" TextWrapping="Wrap" Text="Write Comment..." VerticalAlignment="Top" Width="371"/>
         <Button x:Name="leaveCommentButton" Content="Leave Comment" HorizontalAlignment="Left" Margin="668,371,0,0" VerticalAlignment="Top" Width="111"/>
-        <Slider HorizontalAlignment="Left" Margin="60,325,0,0" VerticalAlignment="Top" Width="162" Maximum="5" TickPlacement="TopLeft" IsSnapToTickEnabled="True" SelectionEnd="5"/>
-        <Button x:Name="rightImageButton" Content="&gt;" HorizontalAlignment="Left" Margin="232,134,0,0" VerticalAlignment="Top" Width="25" Height="25"/>
-        <Button x:Name="leftImageButton" Content="&lt;" HorizontalAlignment="Left" Margin="19,134,0,0" VerticalAlignment="Top" Width="25" Height="25"/>
-        <Label x:Name="AverageRating" Content="Average Rating:" HorizontalAlignment="Left" Margin="38,258,0,0" VerticalAlignment="Top"/>
+        <Slider HorizontalAlignment="Left" Margin="60,371,0,0" VerticalAlignment="Top" Width="162" Maximum="5" TickPlacement="TopLeft" IsSnapToTickEnabled="True" SelectionEnd="5"/>
+        <Button x:Name="rightImageButton" Content="&gt;" HorizontalAlignment="Left" Margin="218,172,0,0" VerticalAlignment="Top" Width="25" Height="25"/>
+        <Button x:Name="leftImageButton" Content="&lt;" HorizontalAlignment="Left" Margin="30,172,0,0" VerticalAlignment="Top" Width="25" Height="25"/>
+        <Label x:Name="AverageRating" Content="Average Rating:" HorizontalAlignment="Left" Margin="38,298,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="164,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.347,-0.938"/>
 
 

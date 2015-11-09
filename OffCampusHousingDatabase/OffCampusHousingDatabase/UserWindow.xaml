@@ -18,18 +18,8 @@
         <Label Content="Phone: " HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top"/>
 
 
-        <Label Content="Watched Properties: " HorizontalAlignment="Left" Margin="197,247,0,0" VerticalAlignment="Top"/>
+        <Label Content="Properties: " HorizontalAlignment="Left" Margin="197,247,0,0" VerticalAlignment="Top"/>
         <Button Content="Update Password" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top" Width="123"/>
-        <ListView x:Name="PropertyListView_Copy" HorizontalAlignment="Left" Height="124" Margin="197,109,0,0" VerticalAlignment="Top" Width="576">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Addr}" Width="150"/>
-                    <GridViewColumn Header="Monthly Rent" DisplayMemberBinding="{Binding Rent}" Width="100"/>
-                    <GridViewColumn Header="Real Data" DisplayMemberBinding="{Binding RealData}" Width="100"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Label Content="My Properties: " HorizontalAlignment="Left" Margin="197,78,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>
