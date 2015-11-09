@@ -70,3 +70,5 @@ C:\Users\Shaina\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHou
 C:\Users\Shaina\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.csproj.GenerateResource.Cache
 C:\Users\Shaina\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\bin\Debug\OffCampusHousingDatabase.exe
 C:\Users\Shaina\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\bin\Debug\OffCampusHousingDatabase.pdb
+C:\Users\Max\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\UpdateProperty.baml
+C:\Users\Max\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\UpdateProperty.g.cs
