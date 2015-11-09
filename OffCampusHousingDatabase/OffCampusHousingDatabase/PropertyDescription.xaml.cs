@@ -33,6 +33,7 @@ namespace OffCampusHousingDatabase
             dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
 
             loadProperty();
+            loadComments();
         }
 
         public void loadProperty()
@@ -41,8 +42,25 @@ namespace OffCampusHousingDatabase
             AddrTextBlock.Text = row[1];
             DesTextBlock.Text = row[2];
             RentTextBlock.Text = row[4];
-            RealTextBlock.Text = row[5];
 
+        }
+
+        public void loadComments()
+        {
+            ArrayList rows = dbHelper.DatabaseSelect("Comment");
+
+            foreach (String[] row in rows)
+            {
+                CommentListView.Items.Add(new Comment { commentID = Convert.ToInt32(row[0]), userEmail = row[2], propertyID = Convert.ToInt32(row[5]), comment = row[8] });
+            }
+        }
+
+        private class Comment
+        {
+            public int commentID { get; set; }
+            public string userEmail { get; set; }
+            public int propertyID { get; set; }
+            public string comment { get; set; }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -65,5 +83,8 @@ namespace OffCampusHousingDatabase
         {
             this.email = email;
         }
+
+     
+
     }
 }

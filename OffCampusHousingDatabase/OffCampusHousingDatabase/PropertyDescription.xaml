@@ -5,17 +5,31 @@
     <Grid HorizontalAlignment="Left" Height="450" Width="800" Margin="0,0,0,0" VerticalAlignment="Top">
         <Rectangle Fill="#FF90BCFD" HorizontalAlignment="Left" Height="46" Stroke="Black" VerticalAlignment="Top" Width="818" Margin="-18,0,0,0"/>
 
-        <Label Content="Address:" HorizontalAlignment="Left" Margin="167,79,0,0" VerticalAlignment="Top"/>
-        <Label Content="Description:" HorizontalAlignment="Left" Margin="167,130,0,0" VerticalAlignment="Top"/>
-        <Label Content="Monthly Rent:" HorizontalAlignment="Left" Margin="167,201,0,0" VerticalAlignment="Top"/>
-        <Label Content="Real Data:" HorizontalAlignment="Left" Margin="167,227,0,0" VerticalAlignment="Top"/>
+        <Label Content="Address:" HorizontalAlignment="Left" Margin="311,67,0,0" VerticalAlignment="Top"/>
+        <Label Content="Description:" HorizontalAlignment="Left" Margin="311,98,0,0" VerticalAlignment="Top"/>
+        <Label Content="Monthly Rent:" HorizontalAlignment="Left" Margin="311,170,0,0" VerticalAlignment="Top"/>
 
-        <TextBlock x:Name="AddrTextBlock" HorizontalAlignment="Left" Margin="239,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="42" Width="115"/>
-        <TextBlock x:Name="DesTextBlock" HorizontalAlignment="Left" Margin="245,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="61" Width="184"/>
-        <TextBlock x:Name="RentTextBlock" HorizontalAlignment="Left" Margin="256,206,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" Width="98"/>
-        <TextBlock x:Name="RealTextBlock" HorizontalAlignment="Left" Margin="239,232,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" Width="115"/>
-        
-        <Button Content="go back" HorizontalAlignment="Left" Margin="31,79,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <TextBlock x:Name="AddrTextBlock" HorizontalAlignment="Left" Margin="412,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="42" Width="115"/>
+        <TextBlock x:Name="DesTextBlock" HorizontalAlignment="Left" Margin="412,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="61" Width="184"/>
+        <TextBlock x:Name="RentTextBlock" HorizontalAlignment="Left" Margin="412,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="21" Width="98"/>
+
+        <Button Content="go back" HorizontalAlignment="Left" Margin="653,85,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <ListView x:Name="CommentListView" HorizontalAlignment="Left" Height="115" Margin="282,240,0,0" VerticalAlignment="Top" Width="434">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="User ID" DisplayMemberBinding="{Binding Addr}" Width="150"/>
+                    <GridViewColumn Header="Comment" DisplayMemberBinding="{Binding Rent}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Image HorizontalAlignment="Left" Height="132" Margin="70,67,0,0" VerticalAlignment="Top" Width="152"/>
+        <Slider x:Name="Property_Rating" HorizontalAlignment="Left" Margin="48,313,0,0" VerticalAlignment="Top" Height="28" Width="174" Maximum="5"/>
+        <Button x:Name="RightPictureButton" Content="&gt;" HorizontalAlignment="Left" Margin="241,119,0,0" VerticalAlignment="Top" Width="25" Height="25"/>
+        <Button x:Name="LeftPictureButton" Content="&lt;" HorizontalAlignment="Left" Margin="23,119,0,0" VerticalAlignment="Top" Width="25" RenderTransformOrigin="-0.18,0.537" Height="25"/>
+        <Label x:Name="Average_Rating" Content="Average Rating" HorizontalAlignment="Left" Margin="23,238,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Height="24" Margin="143,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66"/>
+        <TextBox HorizontalAlignment="Left" Height="33" Margin="297,377,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="349"/>
+        <Button x:Name="LeaveComment" Content="Leave Comment" HorizontalAlignment="Left" Height="33" Margin="682,377,0,0" VerticalAlignment="Top" Width="96"/>
 
 
 
