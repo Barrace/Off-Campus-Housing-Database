@@ -3,9 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="User Profile" Height="450" Width="800" Background="White" WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid HorizontalAlignment="Left" Height="450" Width="800" Margin="0,0,0,0" VerticalAlignment="Top">
-        <Rectangle Fill="#FF90BCFD" HorizontalAlignment="Left" Height="46" Stroke="Black" VerticalAlignment="Top" Width="818" Margin="-18,0,0,0"/>
-
-        <ListView x:Name="PropertyListView" HorizontalAlignment="Left" Height="273" Margin="197,96,0,0" VerticalAlignment="Top" Width="576" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="601*"/>
+            <ColumnDefinition Width="199*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="#FF90BCFD" HorizontalAlignment="Left" Height="46" Stroke="Black" VerticalAlignment="Top" Width="818" Margin="-18,0,0,0" Grid.ColumnSpan="2"/>
+        <Label Content="Email: " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
+        <Label Content="Phone: " HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top"/>
+        <Button Content="Update Password" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top" Width="123"/>
+        <ListView x:Name="PropertyListView_Copy" HorizontalAlignment="Left" Height="300" Margin="197,109,0,0" VerticalAlignment="Top" Width="576" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Addr}" Width="150"/>
@@ -14,12 +20,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Content="Email: " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
-        <Label Content="Phone: " HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top"/>
-
-
-        <Label Content="Properties: " HorizontalAlignment="Left" Margin="197,65,0,0" VerticalAlignment="Top"/>
-        <Button Content="Update Password" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top" Width="123"/>
+        <Label Content="My Properties: " HorizontalAlignment="Left" Margin="197,78,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Back" Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="Back_Click"/>
 
 
     </Grid>
