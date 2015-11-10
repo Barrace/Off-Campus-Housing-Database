@@ -5,7 +5,7 @@
     <Grid HorizontalAlignment="Left" Height="450" Width="800" Margin="0,0,0,0" VerticalAlignment="Top">
         <Rectangle Fill="#FF90BCFD" HorizontalAlignment="Left" Height="46" Stroke="Black" VerticalAlignment="Top" Width="818" Margin="-18,0,0,0"/>
 
-        <ListView x:Name="PropertyListView" HorizontalAlignment="Left" Height="124" Margin="197,278,0,0" VerticalAlignment="Top" Width="576" >
+        <ListView x:Name="PropertyListView" HorizontalAlignment="Left" Height="273" Margin="197,96,0,0" VerticalAlignment="Top" Width="576" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Addr}" Width="150"/>
@@ -18,7 +18,7 @@
         <Label Content="Phone: " HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top"/>
 
 
-        <Label Content="Properties: " HorizontalAlignment="Left" Margin="197,247,0,0" VerticalAlignment="Top"/>
+        <Label Content="Properties: " HorizontalAlignment="Left" Margin="197,65,0,0" VerticalAlignment="Top"/>
         <Button Content="Update Password" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top" Width="123"/>
 
 
