@@ -158,7 +158,6 @@ namespace OffCampusHousingDatabase
         }
 
         #endregion
-
         
     }
 }
