@@ -22,6 +22,7 @@ namespace OffCampusHousingDatabase
         DatabaseHelper dbHelper;
         bool isNewProperty;
         int ID;
+        String managerEmail;
 
         #endregion
 
@@ -35,6 +36,7 @@ namespace OffCampusHousingDatabase
             isNewProperty = true;
             addressTextbox.Focus();
             submit.Content = "Create";
+            managerEmail = "maxbeauchemin@gmail.com";
         }
 
         //Allows user to update an existing property
@@ -44,7 +46,8 @@ namespace OffCampusHousingDatabase
             dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
             isNewProperty = false;
             ID = propertyID;
-            fillInTextboxes();
+            //fillInTextboxes();
+            loadProperty();
             addressTextbox.Focus();
         }
 
@@ -89,6 +92,15 @@ namespace OffCampusHousingDatabase
         private void fillInTextboxes()
         {
             //Will fill in textboxes with information from existing property
+        }
+
+        public void loadProperty()
+        {
+            String[] row = dbHelper.databaseSelectFirst("Property", "`PropertyID` = '" + ID + "'");
+            addressTextbox.Text = row[2];
+            descriptionTextbox.Text = row[3];
+            monthlyRentTextbox.Text = row[5];
+            roomsAvailableTextbox.Text = row[4];
         }
 
         private void createProperty(string address, string description, string monthlyRent, string numberOfRooms)
@@ -181,5 +193,6 @@ namespace OffCampusHousingDatabase
         }
 
         #endregion
+
     }
 }

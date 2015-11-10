@@ -45,3 +45,4 @@ E:\AA    UWOSH\CPS 341   Software Engineering\Off Campus Housing Database\Reposi
 E:\AA    UWOSH\CPS 341   Software Engineering\Off Campus Housing Database\Repository\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.g.resources
 E:\AA    UWOSH\CPS 341   Software Engineering\Off Campus Housing Database\Repository\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.Properties.Resources.resources
 E:\AA    UWOSH\CPS 341   Software Engineering\Off Campus Housing Database\Repository\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.csproj.GenerateResource.Cache
+C:\Users\Max\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.csprojResolveAssemblyReference.cache

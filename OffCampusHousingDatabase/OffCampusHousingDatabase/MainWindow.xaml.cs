@@ -112,7 +112,7 @@ namespace OffCampusHousingDatabase
       private void emailMouseDown(object sender, MouseEventArgs e)
       {
          //Add code that will transition to the user's profile page
-          UserWindow user = new UserWindow();
+          UserWindow user = new UserWindow(email);
           App.Current.MainWindow = user;
           this.Close();
           user.Show();
@@ -214,42 +214,7 @@ namespace OffCampusHousingDatabase
                  andNeeded = true;
              }
          }
-         //if(false)
-         //{
-         //   if (andNeeded)
-         //   {
-         //      whereClause.Append(" and " + "");
-         //   }
-         //   else
-         //   {
-         //      whereClause.Append("");
-         //      andNeeded = true;
-         //   }
-
-         //}
-
-         ////doesn't work when both are filtered together
-         //if (filterRoomTextbox.Text != "")
-         //{
-         //      whereClause.Append("`NumberOfRooms` > " + filterRoomTextbox.Text);
-         //      andNeeded = true;
-         //}
-
-         //if (false)
-         //{
-         //   if (andNeeded)
-         //   {
-         //      whereClause.Append(" and " + "");
-         //   }
-         //   else
-         //   {
-         //      whereClause.Append("");
-         //      andNeeded = true;
-         //   }
-         //}
-
-
-
+        
          propertyListView.Items.Clear();
 
          ArrayList rows = dbHelper.databaseSelect("Property", whereClause.ToString());

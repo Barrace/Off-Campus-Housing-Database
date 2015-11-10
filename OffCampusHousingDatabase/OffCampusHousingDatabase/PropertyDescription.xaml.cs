@@ -44,7 +44,7 @@ namespace OffCampusHousingDatabase
             loadRatings();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow m;
             if (this.email.Equals(""))
@@ -58,6 +58,12 @@ namespace OffCampusHousingDatabase
             App.Current.MainWindow = m;
             this.Close();
             m.Show();
+        }
+
+        private void leaveCommentButton_Click(object sender, RoutedEventArgs e)
+        {
+            newComment(TypeCommentBox.Text);
+            TypeCommentBox.Text = "";
         }
 
         #endregion
@@ -82,12 +88,18 @@ namespace OffCampusHousingDatabase
         {
             commentListView.Items.Clear();
 
-            ArrayList rows = dbHelper.databaseSelect("Comment");
+            ArrayList rows = dbHelper.databaseSelect("Comment", "`PropID` = '" + ID + "'");
 
             foreach (String[] row in rows)
             {
-                commentListView.Items.Add(new Comment { CommentID = Convert.ToInt32(row[0]), UserEmail = row[2], PropID = Convert.ToInt32(row[5]), comment = row[4] });
+                commentListView.Items.Add(new Comment { CommentID = Convert.ToInt32(row[0]), UserEmail = row[2], Text = row[3] });
             }
+        }
+
+        public void newComment(String comment)
+        {
+            dbHelper.databaseInsert("Comment", "`PropID`, `UserEmail`, `Text`", "'" + ID + "','" + email + "','" + comment + "'");
+            loadComments();
         }
 
         public void loadImages()
@@ -119,7 +131,7 @@ namespace OffCampusHousingDatabase
             public int CommentID { get; set; }
             public string UserEmail { get; set; }
             public int PropID { get; set; }
-            public string comment { get; set; }
+            public string Text { get; set; }
         }
 
         private class Image
@@ -139,5 +151,7 @@ namespace OffCampusHousingDatabase
         }
 
         #endregion
+
+        
     }
 }
