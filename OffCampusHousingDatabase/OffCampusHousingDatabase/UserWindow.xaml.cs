@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,9 +22,37 @@ namespace OffCampusHousingDatabase
     /// </summary>
     public partial class UserWindow : Window
     {
-        public UserWindow()
+
+        #region variables
+        String email;
+        #endregion
+
+        #region listeners
+
+        public UserWindow(String e)
         {
             InitializeComponent();
+            email = e;
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main;
+            main = new MainWindow(email);
+            App.Current.MainWindow = main;
+            this.Close();
+            main.Show();
+        }
+        #endregion
+
+        #region logic
+        /*
+            if email was set to the email that the user is logged into:
+                Change password and update contact info is active
+            else
+                controls disabled and just a view
+         */
+        #endregion
+
     }
 }
