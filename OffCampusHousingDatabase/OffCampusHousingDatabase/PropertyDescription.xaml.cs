@@ -44,7 +44,7 @@ namespace OffCampusHousingDatabase
             loadRatings();
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
+        private void backButtonClick(object sender, RoutedEventArgs e)
         {
             MainWindow m;
             if (this.email.Equals(""))
@@ -64,6 +64,13 @@ namespace OffCampusHousingDatabase
         {
             newComment(TypeCommentBox.Text);
             TypeCommentBox.Text = "";
+        }
+
+        public void leaveCommentGotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = "";
+            tb.GotFocus -= leaveCommentGotFocus;
         }
 
         #endregion
