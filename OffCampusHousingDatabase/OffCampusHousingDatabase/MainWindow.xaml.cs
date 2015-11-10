@@ -201,39 +201,52 @@ namespace OffCampusHousingDatabase
             andNeeded = true;
          }
 
-         if(false)
+         if(filterRoomTextbox.Text!= "")
          {
-            if (andNeeded)
-            {
-               whereClause.Append(" and " + "");
-            }
-            else
-            {
-               whereClause.Append("");
-               andNeeded = true;
-            }
-
+             String whereString = "`NumberOfRooms` > " + filterRoomTextbox.Text;
+             if(andNeeded)
+             {
+                 whereClause.Append(" and " + whereString);
+             }
+             else
+             {
+                 whereClause.Append(whereString);
+                 andNeeded = true;
+             }
          }
+         //if(false)
+         //{
+         //   if (andNeeded)
+         //   {
+         //      whereClause.Append(" and " + "");
+         //   }
+         //   else
+         //   {
+         //      whereClause.Append("");
+         //      andNeeded = true;
+         //   }
 
-         //doesn't work when both are filtered together
-         if (filterRoomTextbox.Text != "")
-         {
-               whereClause.Append("`NumberOfRooms` > " + filterRoomTextbox.Text);
-               andNeeded = true;
-         }
+         //}
 
-         if (false)
-         {
-            if (andNeeded)
-            {
-               whereClause.Append(" and " + "");
-            }
-            else
-            {
-               whereClause.Append("");
-               andNeeded = true;
-            }
-         }
+         ////doesn't work when both are filtered together
+         //if (filterRoomTextbox.Text != "")
+         //{
+         //      whereClause.Append("`NumberOfRooms` > " + filterRoomTextbox.Text);
+         //      andNeeded = true;
+         //}
+
+         //if (false)
+         //{
+         //   if (andNeeded)
+         //   {
+         //      whereClause.Append(" and " + "");
+         //   }
+         //   else
+         //   {
+         //      whereClause.Append("");
+         //      andNeeded = true;
+         //   }
+         //}
 
 
 
