@@ -182,6 +182,9 @@ namespace OffCampusHousingDatabase
 
         #endregion
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
     }
 }

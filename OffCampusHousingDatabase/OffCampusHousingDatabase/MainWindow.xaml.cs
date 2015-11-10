@@ -112,8 +112,10 @@ namespace OffCampusHousingDatabase
       private void emailMouseDown(object sender, MouseEventArgs e)
       {
          //Add code that will transition to the user's profile page
-
-
+          UserWindow user = new UserWindow();
+          App.Current.MainWindow = user;
+          this.Close();
+          user.Show();
       }
 
       private void propertyClick(object sender, MouseButtonEventArgs e)

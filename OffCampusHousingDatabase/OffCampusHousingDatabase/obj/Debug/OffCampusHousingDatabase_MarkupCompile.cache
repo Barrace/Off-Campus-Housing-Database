@@ -4,16 +4,28 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\Max\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\
+=======
+C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\
+>>>>>>> origin/master
 OffCampusHousingDatabase
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Max\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\App.xaml
 62055236272
 
 12-776960839
 17548461026
+=======
+C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\App.xaml
+62055236272
+
+12-776960839
+17-307767784
+>>>>>>> origin/master
 Login.xaml;MainWindow.xaml;PropertyDescription.xaml;SignUp.xaml;UpdateProperty.xaml;UserWindow.xaml;
 
 False
