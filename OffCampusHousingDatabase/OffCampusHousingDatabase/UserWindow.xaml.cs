@@ -39,10 +39,11 @@ namespace OffCampusHousingDatabase
             dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
         }
 
-        public UserWindow(String e, bool isOwnProfile)
+        public UserWindow(String e, bool isOwn)
         {
             InitializeComponent();
             email = e;
+            isOwnProfile = isOwn;
             dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
 
             isManager = true;
@@ -59,6 +60,15 @@ namespace OffCampusHousingDatabase
                 }
             }
             emailLabel.Content = "Email: " + email;
+
+            if (isOwnProfile)
+            {
+
+            }
+            else
+            {
+                updatePass.IsEnabled = false;
+            }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -84,12 +94,6 @@ namespace OffCampusHousingDatabase
                 screen.Show();
                 this.Close();
             }
-            else
-            {
-
-            }
-
-
         }
 
 
@@ -105,12 +109,7 @@ namespace OffCampusHousingDatabase
 
 
         #region logic
-        /*
-            if email was set to the email that the user is logged into:
-                Change password and update contact info is active
-            else
-                controls disabled and just a view
-         */
+        
         #endregion
 
         private class PropertyItem
