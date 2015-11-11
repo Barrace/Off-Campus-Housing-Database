@@ -69,3 +69,5 @@ C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampus
 C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.g.resources
 C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.Properties.Resources.resources
 C:\Users\meshi_000\Documents\GitHub\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\obj\Debug\OffCampusHousingDatabase.csproj.GenerateResource.Cache
+E:\AA    UWOSH\CPS 341   Software Engineering\Off Campus Housing Database\Repository\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\bin\Debug\OffCampusHousingDatabase.exe
+E:\AA    UWOSH\CPS 341   Software Engineering\Off Campus Housing Database\Repository\cs341_2t3\OffCampusHousingDatabase\OffCampusHousingDatabase\bin\Debug\OffCampusHousingDatabase.pdb

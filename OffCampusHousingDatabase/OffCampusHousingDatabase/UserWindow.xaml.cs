@@ -26,8 +26,10 @@ namespace OffCampusHousingDatabase
         String email;
         DatabaseHelper dbHelper;
         bool isManager;
+        bool isOwnProfile;
 
         #endregion
+
 
         #region listeners
 
@@ -37,7 +39,7 @@ namespace OffCampusHousingDatabase
             dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
         }
 
-        public UserWindow(String e)
+        public UserWindow(String e, bool isOwnProfile)
         {
             InitializeComponent();
             email = e;
@@ -46,6 +48,7 @@ namespace OffCampusHousingDatabase
             isManager = true;
             if (isManager)
             {
+                listLabel.Content = "My Properties:";
                 userPropertyView.Items.Clear();
 
                 ArrayList rows = dbHelper.databaseSelect("Property", "`ManagerEmail` = '" + email + "'");
@@ -55,6 +58,7 @@ namespace OffCampusHousingDatabase
                     userPropertyView.Items.Add(new PropertyItem { PropID = Convert.ToInt32(row[0]), Addr = row[2], Rent = Convert.ToInt32(row[5]), NumberOfRooms = Convert.ToInt32(row[4]) });
                 }
             }
+            emailLabel.Content = "Email: " + email;
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -99,7 +103,6 @@ namespace OffCampusHousingDatabase
 
         #endregion
 
-        
 
         #region logic
         /*
