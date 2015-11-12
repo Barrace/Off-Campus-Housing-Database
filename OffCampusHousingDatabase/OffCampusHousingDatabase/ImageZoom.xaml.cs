@@ -69,7 +69,7 @@ namespace OffCampusHousingDatabase
 
         public void showSelectedImage()
         {
-            ImageBox.Source = (BitmapImage)imageArr[selectedImage];
+            ImageBox.Source = ((DatabaseImage)imageArr[selectedImage]).image;
         }
 
         #endregion

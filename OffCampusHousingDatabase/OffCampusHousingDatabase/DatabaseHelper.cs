@@ -49,13 +49,15 @@ namespace OffCampusHousingDatabase
 
                 while (reader.Read())
                 {
+                    String ID = reader.GetString(0);
                     Stream StreamObj = new MemoryStream((byte[])reader.GetValue(2));
                     BitmapImage BitObj = new BitmapImage();
                     BitObj.BeginInit();
                     BitObj.StreamSource = StreamObj;
                     BitObj.EndInit();
 
-                    output.Add(BitObj);
+                    DatabaseImage i = new DatabaseImage(ID, BitObj);
+                    output.Add(i);
                 }
 
                 return output;
@@ -213,7 +215,7 @@ namespace OffCampusHousingDatabase
             }
         }
 
-        private bool databaseDelete(String tableName, String whereClause)
+        public bool databaseDelete(String tableName, String whereClause)
         {
             try
             {

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +25,9 @@ namespace OffCampusHousingDatabase
         int ID;
         String managerEmail;
 
+        Object[] imageArr;
+        int selectedImage;
+
         #endregion
 
         #region Listeners
@@ -47,8 +50,8 @@ namespace OffCampusHousingDatabase
             dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
             isNewProperty = false;
             ID = propertyID;
-            //fillInTextboxes();
             loadProperty();
+            loadImages();
             addressTextbox.Focus();
         }
 
@@ -79,7 +82,41 @@ namespace OffCampusHousingDatabase
 
         private void removePhoto_Click(object sender, RoutedEventArgs e)
         {
-            //Will allow user to remove a photo
+            DatabaseImage currImage = (DatabaseImage)imageArr[selectedImage];
+            dbHelper.databaseDelete("Image", "`ID` = '" + currImage.ID + "'");
+            statusLabel.Text = "Image Deleted";
+
+            loadImages();
+        }
+
+        private void nextImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            selectedImage = selectedImage + 1;
+
+            if (selectedImage == imageArr.Length)
+                selectedImage = 0;
+
+            showSelectedImage();
+        }
+
+        private void prevImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            selectedImage = selectedImage - 1;
+
+            if (selectedImage < 0)
+                selectedImage = imageArr.Length - 1;
+
+            showSelectedImage();
+        }
+
+        private void ImageBox_MouseDown(object sender, RoutedEventArgs e)
+        {
+            if (imageArr.Length > 0)
+            {
+                ImageZoom i = new ImageZoom(imageArr, selectedImage);
+                App.Current.MainWindow = i;
+                i.Show();
+            }
         }
 
         private void submit_Click(object sender, RoutedEventArgs e)
@@ -215,7 +252,40 @@ namespace OffCampusHousingDatabase
 
         private void uploadImage(String fileName)
         {
-            dbHelper.databaseInsertImageFromFile(fileName, ID);
+            if(dbHelper.databaseInsertImageFromFile(fileName, ID))
+            { 
+                statusLabel.Text = "Image Uploaded to Database";
+            }
+            loadImages();
+        }
+
+        public void loadImages()
+        {
+            //Currently set to load a single image
+            ArrayList images = dbHelper.databaseSelectImage("Image", "`PropID` = '" + ID + "'");
+            imageArr = images.ToArray();
+            if (imageArr.Length > 1)
+            {
+                nextImageButton.IsEnabled = true;
+                prevImageButton.IsEnabled = true;
+            }
+
+
+            if (imageArr.Length > 0)
+            {
+                selectedImage = 0;
+                showSelectedImage();
+            }
+            else
+            {
+                nextImageButton.IsEnabled = false;
+                prevImageButton.IsEnabled = false;
+            }
+        }
+
+        public void showSelectedImage()
+        {
+            ImageBox.Source = ((DatabaseImage)imageArr[selectedImage]).image;
         }
 
         #endregion
