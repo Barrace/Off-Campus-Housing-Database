@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Configuration;
+using System.IO;
 
 namespace OffCampusHousingDatabase
 {
@@ -53,7 +54,27 @@ namespace OffCampusHousingDatabase
 
         private void addPhoto_Click(object sender, RoutedEventArgs e)
         {
-            //Will allow user to add a photo
+            // Create OpenFileDialog
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            // Set filter for file extension and default file extension
+            dlg.DefaultExt = ".jpeg";
+            dlg.Filter = "Image files (*.png, *.jpg)|*.png;*.jpg|All files (*.*)|*.*";
+
+            // Display OpenFileDialog by calling ShowDialog method
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox
+            if (result == true)
+            {
+                FileInfo f = new FileInfo(dlg.FileName);
+                if (f.Length > 1000000)
+                {
+                    MessageBox.Show("Image Size may not exceed 1MB", "Not Available");
+                    return;
+                }
+                uploadImage(dlg.FileName);
+            }
         }
 
         private void removePhoto_Click(object sender, RoutedEventArgs e)
@@ -190,6 +211,11 @@ namespace OffCampusHousingDatabase
             App.Current.MainWindow = m;
             this.Close();
             m.Show();
+        }
+
+        private void uploadImage(String fileName)
+        {
+            dbHelper.databaseInsertImageFromFile(fileName, ID);
         }
 
         #endregion

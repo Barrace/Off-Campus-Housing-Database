@@ -3,6 +3,8 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Windows.Media.Imaging;
 using MySql.Data.MySqlClient;
 
 namespace OffCampusHousingDatabase
@@ -25,6 +27,7 @@ namespace OffCampusHousingDatabase
         {
             try
             {
+
                 MySqlConnection conn = new MySqlConnection(connectionString);
                 conn.Open();
 
@@ -46,15 +49,14 @@ namespace OffCampusHousingDatabase
 
                 while (reader.Read())
                 {
-                    Object[] row = new Object[numCols];
-                    for (int i = 0; i < numCols; i++)
-                    {
-                        row[i] = (reader.GetValue(i));
-                    }
-                    output.Add(row);
-                }
+                    Stream StreamObj = new MemoryStream((byte[])reader.GetValue(2));
+                    BitmapImage BitObj = new BitmapImage();
+                    BitObj.BeginInit();
+                    BitObj.StreamSource = StreamObj;
+                    BitObj.EndInit();
 
-                conn.Close();
+                    output.Add(BitObj);
+                }
 
                 return output;
             }
@@ -132,6 +134,11 @@ namespace OffCampusHousingDatabase
             }
         }
 
+        public bool databaseInsertImageFromFile(String fileName, int propID)
+        {
+            byte[] image = File.ReadAllBytes(fileName);
+            return databaseInsertImage("Image", propID.ToString(), image);
+        }
 
         public bool databaseInsertImage(String tableName, String PropertyID, byte[] arr)
         {
@@ -140,7 +147,7 @@ namespace OffCampusHousingDatabase
                 MySqlConnection conn = new MySqlConnection(connectionString);
                 conn.Open();
 
-                string CmdString = "INSERT INTO `Image` (`PropID`, `Image`) VALUES(@Property, @Image)";
+                string CmdString = "INSERT INTO `Image` (`PropID`, `Image`) VALUES(@PropID, @Image)";
                 MySqlCommand cmd = new MySqlCommand(CmdString, conn);
 
                 cmd.Parameters.Add("@PropID", MySqlDbType.VarChar, 45);

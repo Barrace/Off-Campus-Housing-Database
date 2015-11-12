@@ -26,6 +26,8 @@ namespace OffCampusHousingDatabase
 
         int ID;
         String email = "";
+        Object[] imageArr;
+        int selectedImage;
 
         #endregion
 
@@ -37,6 +39,7 @@ namespace OffCampusHousingDatabase
 
             ID = propertyID;
             dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
+            imageArr = new Object[4];
 
             loadProperty();
             loadComments();
@@ -59,6 +62,36 @@ namespace OffCampusHousingDatabase
             App.Current.MainWindow = m;
             this.Close();
             m.Show();
+        }
+
+        private void nextImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            selectedImage = selectedImage + 1;
+
+            if (selectedImage == imageArr.Length)
+                selectedImage = 0;
+
+            showSelectedImage();
+        }
+
+        private void prevImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            selectedImage = selectedImage - 1;
+
+            if (selectedImage < 0)
+                selectedImage = imageArr.Length - 1;
+
+            showSelectedImage();
+        }
+
+        private void ImageBox_MouseDown(object sender, RoutedEventArgs e)
+        {
+            if(imageArr.Length>0)
+            {
+                ImageZoom i = new ImageZoom(imageArr, selectedImage);
+                App.Current.MainWindow = i;
+                i.Show();
+            }
         }
 
         private void leaveCommentButton_Click(object sender, RoutedEventArgs e)
@@ -131,7 +164,24 @@ namespace OffCampusHousingDatabase
 
         public void loadImages()
         {
+            //Currently set to load a single image
+            ArrayList images = dbHelper.databaseSelectImage("Image", "`PropID` = '" + ID + "'");
+            imageArr = images.ToArray();
+            if (imageArr.Length > 1)
+            {
+                nextImageButton.IsEnabled = true;
+                prevImageButton.IsEnabled = true;
+            }
+            if (imageArr.Length > 0)
+            {
+            selectedImage = 0;
+            showSelectedImage();
+            }
+        }
 
+        public void showSelectedImage()
+        {
+            ImageBox.Source = (BitmapImage)imageArr[selectedImage];
         }
 
         public void loadRatings()
@@ -178,11 +228,6 @@ namespace OffCampusHousingDatabase
         }
 
         #endregion
-<<<<<<< HEAD
-=======
-
-
->>>>>>> origin/master
         
     }
 }

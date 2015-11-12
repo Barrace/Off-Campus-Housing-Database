@@ -67,6 +67,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ErrorLogger.cs" />
+    <Compile Include="ImageZoom.xaml.cs">
+      <DependentUpon>ImageZoom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PropertyDescription.xaml.cs">
       <DependentUpon>PropertyDescription.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,10 @@
     <Compile Include="UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="ImageZoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

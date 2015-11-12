@@ -137,52 +137,6 @@ namespace OffCampusHousingDatabase
          loadProperties();
       }
 
-      public void uploadImageButtonClick(object sender, RoutedEventArgs e)
-      {
-         // Create OpenFileDialog
-         Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-
-         // Set filter for file extension and default file extension
-         dlg.DefaultExt = ".png";
-         dlg.Filter = "Images (.png)|*.png";
-
-         // Display OpenFileDialog by calling ShowDialog method
-         Nullable<bool> result = dlg.ShowDialog();
-
-         // Get the selected file name and display in a TextBox
-         if (result == true)
-         {
-            FileStream fs;
-            BinaryReader br;
-
-            string FileName = dlg.FileName;
-            byte[] ImageData;
-            fs = new FileStream(FileName, FileMode.Open, FileAccess.Read);
-            br = new BinaryReader(fs);
-            ImageData = br.ReadBytes((int)fs.Length);
-
-            //StringBuilder sb = new StringBuilder();
-            //foreach (byte b in ImageData)
-            //{
-            //    sb.Append(b.ToString() + ",");
-            //}
-
-
-            bool ex = dbHelper.databaseInsertImage("Image", "202", ImageData);
-            MessageBox.Show("");
-         }
-      }
-
-      public void viewImageButtonClick(object sender, RoutedEventArgs e)
-      {
-         ArrayList rows = dbHelper.databaseSelectImage("Image");
-         foreach (Object[] row in rows)
-         {
-            byte[] arr = (byte[])row[2];
-            MessageBox.Show(arr.ToString());
-         }
-      }
-
       #endregion
 
 
