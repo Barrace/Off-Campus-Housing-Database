@@ -23,10 +23,7 @@ namespace OffCampusHousingDatabase
 
         #region variables
 
-        String email;
         DatabaseHelper dbHelper;
-        bool isManager;
-        bool isOwnProfile;
 
         #endregion
 
@@ -39,42 +36,55 @@ namespace OffCampusHousingDatabase
             dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
         }
 
-        public UserWindow(String e, bool isOwn)
+        public UserWindow(String userEmail)
         {
             InitializeComponent();
-            email = e;
-            isOwnProfile = isOwn;
             dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
+            emailLabel.Content = userEmail;
 
-            isManager = true;
-            if (isManager)
+            //This is your profile
+            if (userEmail.Equals(Globals.email))
             {
-                listLabel.Content = "My Properties:";
-                userPropertyView.Items.Clear();
-
-                ArrayList rows = dbHelper.databaseSelect("Property", "`ManagerEmail` = '" + email + "'");
-
-                foreach (String[] row in rows)
+                //if you are a manager
+                if (Globals.isManager)
                 {
-                    userPropertyView.Items.Add(new PropertyItem { PropID = Convert.ToInt32(row[0]), Addr = row[2], Rent = Convert.ToInt32(row[5]), NumberOfRooms = Convert.ToInt32(row[4]) });
+                    listLabel.Content = "My Properties:";
+                    userPropertyView.Items.Clear();
+
+                    ArrayList rows = dbHelper.databaseSelect("Property", "`ManagerEmail` = '" + Globals.email + "'");
+
+                    foreach (String[] row in rows)
+                    {
+                        userPropertyView.Items.Add(new PropertyItem { PropID = Convert.ToInt32(row[0]), Addr = row[2], Rent = Convert.ToInt32(row[5]), NumberOfRooms = Convert.ToInt32(row[4]) });
+                    }
                 }
-            }
-            emailLabel.Content = "Email: " + email;
+                else
+                {
+                    listLabel.Content = "Watched Properties:";
+                    userPropertyView.Items.Clear();
 
-            if (isOwnProfile)
-            {
+                    String watchedPropertiesCSV = "1,5,6";
 
+                    ArrayList rows = dbHelper.databaseSelect("Property", "`PropertyID` IN (" + watchedPropertiesCSV +")");
+
+                    foreach (String[] row in rows)
+                    {
+                        userPropertyView.Items.Add(new PropertyItem { PropID = Convert.ToInt32(row[0]), Addr = row[2], Rent = Convert.ToInt32(row[5]), NumberOfRooms = Convert.ToInt32(row[4]) });
+                    }
+                }
             }
             else
             {
-                updatePass.IsEnabled = false;
+                userPropertyView.Visibility = Visibility.Hidden;
+                listLabel.Visibility = Visibility.Hidden;
+                updatePass.Visibility = Visibility.Hidden;
             }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             MainWindow main;
-            main = new MainWindow(email);
+            main = new MainWindow();
             App.Current.MainWindow = main;
             this.Close();
             main.Show();
@@ -82,7 +92,7 @@ namespace OffCampusHousingDatabase
 
         private void propertyClick(object sender, MouseButtonEventArgs e)
         {
-            if (isManager)
+            if (Globals.isManager)
             {
                 if (userPropertyView.SelectedIndex < 0)
                     return;

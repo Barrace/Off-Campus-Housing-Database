@@ -90,14 +90,19 @@ namespace OffCampusHousingDatabase
 
             String pw = ((Int32)password.GetHashCode()).ToString();
 
-            if (dbHelper.databaseSelect("User", "`email` = '" + email + "' AND `password` = '" + pw + "'").Count == 0)
+            String[] res = dbHelper.databaseSelectFirst("User", "`email` = '" + email + "' AND `password` = '" + pw + "'");
+
+            if (res.Length == 0)
             {
                 return "Invalid Credentials";
             }
 
             //Authenticated Successfully at this point
+            Globals.email = email;
+            Globals.loggedOn = true;
+            Globals.isManager = res[2].Equals("1");
 
-            MainWindow m = new MainWindow(email);
+            MainWindow m = new MainWindow();
             App.Current.MainWindow = m;
             this.Close();
             m.Show();

@@ -68,6 +68,7 @@
     </ApplicationDefinition>
     <Compile Include="ErrorLogger.cs" />
     <Compile Include="DatabaseImage.cs" />
+    <Compile Include="Globals.cs" />
     <Compile Include="ImageZoom.xaml.cs">
       <DependentUpon>ImageZoom.xaml</DependentUpon>
     </Compile>

@@ -117,7 +117,11 @@ namespace OffCampusHousingDatabase
                 if (dbHelper.databaseInsert("User", "`email`, `password`, `isManager`", "'" + email + "','" + pw + "','" + isManagerBit + "'"))
                 {
                     //successfully inserted, switch views and update the global user email variable
-                    MainWindow m = new MainWindow(email);
+                    Globals.email = email;
+                    Globals.loggedOn = true;
+                    Globals.isManager = isManager;
+
+                    MainWindow m = new MainWindow();
                     App.Current.MainWindow = m;
                     this.Close();
                     m.Show();

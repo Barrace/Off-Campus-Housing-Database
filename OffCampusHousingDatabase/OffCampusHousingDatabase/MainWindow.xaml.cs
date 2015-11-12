@@ -34,35 +34,23 @@ namespace OffCampusHousingDatabase
       #region Listeners
       public MainWindow()
       {
-         InitializeComponent();
-         loggedOn = false;
-         email = "";
+          InitializeComponent();
+          dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
+          loadProperties();
 
-         dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
+          if (Globals.loggedOn)
+          {
+              //Show on the UI that the user is logged on, and hide the Login, Or, and Signup textblocks
+              loginTextblock.Text = "";
+              OrTextblock.Text = "";
+              signupTextblock.Text = "";
 
-         loadProperties();
+              //Display user email on page
+              userEmailTextBlock.Text = Globals.email;
+          }
       }
 
-      public MainWindow(String email)
-      {
-         InitializeComponent();
-         loggedOn = true;
-         this.email = email;
-
-         dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
-
-         //Show on the UI that the user is logged on, and hide the Login, Or, and Signup textblocks
-         loginTextblock.Text = "";
-         OrTextblock.Text = "";
-         signupTextblock.Text = "";
-
-         //Display user email on page
-         userEmailTextBlock.Text = email;
-
-         loadProperties();
-
-      }
-
+      
       private void loginMouseDown(object sender, MouseButtonEventArgs e)
       {
          Login l = new Login();
@@ -112,7 +100,7 @@ namespace OffCampusHousingDatabase
       private void emailMouseDown(object sender, MouseEventArgs e)
       {
          //Add code that will transition to the user's profile page
-          UserWindow user = new UserWindow(email, true);
+          UserWindow user = new UserWindow(Globals.email);
           App.Current.MainWindow = user;
           this.Close();
           user.Show();

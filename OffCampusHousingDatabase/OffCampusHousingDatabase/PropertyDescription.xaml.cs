@@ -50,15 +50,7 @@ namespace OffCampusHousingDatabase
 
         private void backButtonClick(object sender, RoutedEventArgs e)
         {
-            MainWindow m;
-            if (this.email.Equals(""))
-            {
-                m = new MainWindow();
-            }
-            else
-            {
-                m = new MainWindow(email);
-            }
+            MainWindow m = new MainWindow();
             App.Current.MainWindow = m;
             this.Close();
             m.Show();
@@ -120,7 +112,7 @@ namespace OffCampusHousingDatabase
         private void leaserMouseDown(object sender, MouseEventArgs e)
         {
             //Add code that will transition to the user's profile page
-            UserWindow user = new UserWindow(email, false);
+            UserWindow user = new UserWindow(leaserEmail.Text);
             App.Current.MainWindow = user;
             this.Close();
             user.Show();

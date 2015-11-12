@@ -7,8 +7,8 @@
         <Rectangle Fill="#FF90BCFD" HorizontalAlignment="Left" Height="46" Stroke="Black" VerticalAlignment="Top" Width="818" Margin="-18,0,0,0"/>
 
         <Image x:Name="ImageBox" Margin="65,51,65,40"/>
-        <Button x:Name="nextImageButton" Content="&gt;" HorizontalAlignment="Right" Margin="0,168,30,0" VerticalAlignment="Top" Width="25" Height="25" Click="nextImageButton_Click" IsEnabled="False"/>
-        <Button x:Name="prevImageButton" Content="&lt;" HorizontalAlignment="Left" Margin="15,168,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="prevImageButton_Click" IsEnabled="False"/>
+        <Button x:Name="nextImageButton" Content="&gt;" HorizontalAlignment="Right" Margin="0,199,35,0" VerticalAlignment="Top" Width="25" Height="25" Click="nextImageButton_Click" IsEnabled="False"/>
+        <Button x:Name="prevImageButton" Content="&lt;" HorizontalAlignment="Left" Margin="10,199,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="prevImageButton_Click" IsEnabled="False"/>
 
     </Grid>
 </Window>
