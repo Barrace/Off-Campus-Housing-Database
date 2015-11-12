@@ -40,7 +40,11 @@ namespace OffCampusHousingDatabase
             isNewProperty = true;
             addressTextbox.Focus();
             submit.Content = "Create";
+
             managerEmail = "maxbeauchemin@gmail.com";
+
+            addPhoto.IsEnabled = false;
+            removePhoto.IsEnabled = false;
         }
 
         //Allows user to update an existing property
@@ -171,10 +175,15 @@ namespace OffCampusHousingDatabase
                 dbHelper.databaseInsert("Property", columns, values);
                 statusLabel.Text = "Property successfully created.";
 
+                //Get the Property ID of the Property that was just added
+                String[] res  = dbHelper.databaseSelectLast("Property");
+                ID = Convert.ToInt32(res[0]);
+
                 //Will update window to recognize this property as an existing one
-                //Update ID from database
-                //submit.Content = "Update";
-                //isNewProperty = false;
+                UpdateProperty p = new UpdateProperty(ID);
+                App.Current.MainWindow = p;
+                this.Close();
+                p.Show();
             }
         }
 
@@ -280,6 +289,7 @@ namespace OffCampusHousingDatabase
             {
                 nextImageButton.IsEnabled = false;
                 prevImageButton.IsEnabled = false;
+                removePhoto.IsEnabled = false;
             }
         }
 

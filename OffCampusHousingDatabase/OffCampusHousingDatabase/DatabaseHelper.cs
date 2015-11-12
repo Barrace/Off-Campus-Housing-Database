@@ -85,6 +85,22 @@ namespace OffCampusHousingDatabase
             return null;
         }
 
+        public String[] databaseSelectLast(String tableName)
+        {
+            return databaseSelectLast(tableName, "");
+        }
+
+        public String[] databaseSelectLast(String tableName, String whereClause)
+        {
+            ArrayList arr = databaseSelect(tableName, "");
+            String[] last = new String[0];
+            foreach (String[] row in arr)
+            {
+                last = row;
+            }
+            return last;
+        }
+
         public ArrayList databaseSelect(String tableName)
         {
             return databaseSelect(tableName, "");
