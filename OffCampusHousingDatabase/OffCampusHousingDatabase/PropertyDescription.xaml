@@ -33,6 +33,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="164,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.347,-0.938"/>
         <TextBlock x:Name="AverageRatingBlock" HorizontalAlignment="Left" Margin="155,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="58"/>
         <Label x:Name="Rate" Content="Rate Property:" HorizontalAlignment="Left" Margin="10,371,0,0" VerticalAlignment="Top"/>
+        <Label Content="Leaser:" HorizontalAlignment="Left" Margin="668,66,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.62,-0.152"/>
+        <TextBlock x:Name="leaserEmail" HorizontalAlignment="Left" Margin="598,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Blue" Cursor="Hand" RenderTransformOrigin="-0.132,-0.128" Width="181" MouseEnter="leaserMouseEnter" MouseDown="leaserMouseDown" MouseLeave="leaserMouseLeave" />
 
 
 

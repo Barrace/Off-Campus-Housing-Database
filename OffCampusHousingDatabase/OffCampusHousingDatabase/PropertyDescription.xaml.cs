@@ -42,6 +42,7 @@ namespace OffCampusHousingDatabase
             loadComments();
             loadImages();
             loadRatings();
+            leaserEmail.Text = "database hit here";
         }
 
         private void backButtonClick(object sender, RoutedEventArgs e)
@@ -71,6 +72,25 @@ namespace OffCampusHousingDatabase
             TextBox tb = (TextBox)sender;
             tb.Text = "";
             tb.GotFocus -= leaveCommentGotFocus;
+        }
+
+        private void leaserMouseEnter(object sender, MouseEventArgs e)
+        {
+            leaserEmail.TextDecorations = TextDecorations.Underline;
+        }
+
+        private void leaserMouseLeave(object sender, MouseEventArgs e)
+        {
+            leaserEmail.TextDecorations = null;
+        }
+
+        private void leaserMouseDown(object sender, MouseEventArgs e)
+        {
+            //Add code that will transition to the user's profile page
+            UserWindow user = new UserWindow(email, false);
+            App.Current.MainWindow = user;
+            this.Close();
+            user.Show();
         }
 
         #endregion
@@ -158,6 +178,11 @@ namespace OffCampusHousingDatabase
         }
 
         #endregion
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/master
         
     }
 }
