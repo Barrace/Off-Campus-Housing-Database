@@ -20,18 +20,21 @@
         </ListView>
 
 
-        <Label Content="Filters" HorizontalAlignment="Left" Margin="668,127,0,0" VerticalAlignment="Top" FontSize="14"/>
-        
+        <Label Content="Filters" HorizontalAlignment="Left" Margin="668,127,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="SemiBold"/>
+
         <Label Content="Rent Less Than: " HorizontalAlignment="Left" Margin="617,176,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="filterRentTextbox" HorizontalAlignment="Left" Height="23" Margin="709,179,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="67"/>
         <Label Content="Rooms More Than: " HorizontalAlignment="Left" Margin="598,217,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="filterRoomTextbox" HorizontalAlignment="Left" Height="23" Margin="709,220,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="67"/>
-        
-        <Button x:Name="filterButton"  Content="Filter" HorizontalAlignment="Left" Margin="655,290,0,0" VerticalAlignment="Top" Width="75" Click="filterButtonClick"/>
-        <TextBlock x:Name="filterLabel" HorizontalAlignment="Left" Margin="598,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="167" Foreground="Red" Visibility="Hidden" UseLayoutRounding="True" Text="Please use correct Value"/>
-        
+
+        <Button x:Name="filterButton"  Content="Filter" HorizontalAlignment="Left" Margin="607,289,0,0" VerticalAlignment="Top" Width="75" Click="filterButtonClick"/>
+        <Button x:Name="resetButton" Content="Reset" HorizontalAlignment="Left" Margin="701,289,0,0" VerticalAlignment="Top" Width="75" Click="resetButton_Click"/>
+
+        <TextBlock x:Name="filterLabel" HorizontalAlignment="Left" Margin="598,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="167" Foreground="Red" UseLayoutRounding="True" Text="Please use correct Value" Visibility="Hidden"/>
         <TextBlock x:Name="userEmailTextBlock" HorizontalAlignment="Left" Margin="24,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="Blue" MouseEnter="emailMouseEnter" MouseLeave="emailMouseLeave" MouseDown="emailMouseDown" Cursor="Hand" FontStyle="Normal"/>
-        
+        <TextBlock HorizontalAlignment="Left" Margin="10,86,0,0" TextWrapping="Wrap" Text="Properties" VerticalAlignment="Top" Width="136" Height="21" FontSize="16" FontWeight="Bold"/>
+
+
 
 
 

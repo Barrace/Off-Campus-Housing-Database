@@ -126,6 +126,14 @@ namespace OffCampusHousingDatabase
          loadProperties();
       }
 
+      private void resetButton_Click(object sender, RoutedEventArgs e)
+      {
+         filterRentTextbox.Text = "";
+         filterRoomTextbox.Text = "";
+         filterLabel.Visibility = System.Windows.Visibility.Hidden;
+         loadAllProperties();
+      }
+
       #endregion
 
 
@@ -214,8 +222,7 @@ namespace OffCampusHousingDatabase
          public int NumberOfRooms { get; set; }
       }
 
+
       #endregion
-
-
    }
 }
