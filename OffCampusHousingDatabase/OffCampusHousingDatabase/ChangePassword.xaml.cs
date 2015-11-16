@@ -20,11 +20,25 @@ namespace OffCampusHousingDatabase
     /// </summary>
     public partial class ChangePassword : Window
     {
+        #region Variables
+
+        DatabaseHelper dbHelper;
+
+        #endregion
+
+        #region Listeners
+
         public ChangePassword()
         {
             InitializeComponent();
             dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
             emailTextbox.Focus();
         }
+
+        #endregion
+
+        #region Logic
+
+        #endregion
     }
 }
