@@ -6,7 +6,7 @@
         <Rectangle Fill="#FF90BCFD" HorizontalAlignment="Left" Height="46" Stroke="Black" VerticalAlignment="Top" Width="818" Margin="-18,0,0,0"/>
 
         <TextBlock x:Name="loginTextblock" HorizontalAlignment="Left" Margin="624,13,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Foreground="Blue" MouseEnter="loginMouseEnter" MouseLeave="loginMouseLeave" MouseDown="loginMouseDown" Cursor="Hand" FontStyle="Normal"/>
-        <TextBlock x:Name="signupTextblock" HorizontalAlignment="Left" Margin="718,13,0,0" TextWrapping="Wrap" Text="Sign up" VerticalAlignment="Top" Foreground="Blue" MouseEnter="signupMouseEnter" MouseLeave="signupMouseLeave" MouseDown="signupMouseDown" Cursor="Hand" FontStyle="Normal"/>
+        <TextBlock x:Name="signupTextblock" HorizontalAlignment="Left" Margin="718,13,0,0" TextWrapping="Wrap" Text="Sign Up" VerticalAlignment="Top" Foreground="Blue" MouseEnter="signupMouseEnter" MouseLeave="signupMouseLeave" MouseDown="signupMouseDown" Cursor="Hand" FontStyle="Normal"/>
         <TextBlock x:Name="OrTextblock" HorizontalAlignment="Left" Margin="683,13,0,0" TextWrapping="Wrap" Text="or" VerticalAlignment="Top"/>
 
         <ListView x:Name="propertyListView" HorizontalAlignment="Left" Height="294" Margin="10,112,0,0" VerticalAlignment="Top" Width="576" MouseDoubleClick="propertyClick">

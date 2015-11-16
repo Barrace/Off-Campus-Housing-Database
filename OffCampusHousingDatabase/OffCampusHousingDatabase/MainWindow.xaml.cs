@@ -42,7 +42,7 @@ namespace OffCampusHousingDatabase
           if (Globals.loggedOn)
           {
               //Show on the UI that the user is logged on, and hide the Login, Or, and Signup textblocks
-              loginTextblock.Text = "";
+              loginTextblock.Text = "Log Out";
               OrTextblock.Text = "";
               signupTextblock.Text = "";
 
@@ -54,10 +54,29 @@ namespace OffCampusHousingDatabase
       
       private void loginMouseDown(object sender, MouseButtonEventArgs e)
       {
-         Login loginPage = new Login();
-         App.Current.MainWindow = loginPage;
-         this.Close();
-         loginPage.Show();
+         if(userEmailTextBlock.Text.Equals(""))
+         {
+            Login loginPage = new Login();
+            App.Current.MainWindow = loginPage;
+            this.Close();
+            loginPage.Show();
+         }
+         else
+         {
+            Globals.email = "";
+            Globals.sender = "";
+            Globals.loggedOn = false;
+            Globals.isManager = false;
+
+            loginTextblock.Text = "Login";
+            OrTextblock.Text = "or";
+            signupTextblock.Text = "Sign Up";
+
+            MainWindow m = new MainWindow();
+            App.Current.MainWindow = m;
+            this.Close();
+            m.Show();
+         }
       }
 
       private void loginMouseEnter(object sender, MouseEventArgs e)
@@ -190,7 +209,6 @@ namespace OffCampusHousingDatabase
       private void loadAllProperties()
       {
          StringBuilder whereClause = new StringBuilder();
-         bool andNeeded = false;
 
          propertyListView.Items.Clear();
 
