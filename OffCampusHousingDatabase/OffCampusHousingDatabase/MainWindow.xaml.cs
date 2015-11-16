@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Configuration;
+using System.Text.RegularExpressions;
 
 namespace OffCampusHousingDatabase
 {
@@ -36,7 +37,7 @@ namespace OffCampusHousingDatabase
       {
           InitializeComponent();
           dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
-          loadProperties();
+          loadAllProperties();
 
           if (Globals.loggedOn)
           {
@@ -53,10 +54,10 @@ namespace OffCampusHousingDatabase
       
       private void loginMouseDown(object sender, MouseButtonEventArgs e)
       {
-         Login l = new Login();
-         App.Current.MainWindow = l;
+         Login loginPage = new Login();
+         App.Current.MainWindow = loginPage;
          this.Close();
-         l.Show();
+         loginPage.Show();
       }
 
       private void loginMouseEnter(object sender, MouseEventArgs e)
@@ -71,10 +72,10 @@ namespace OffCampusHousingDatabase
 
       private void signupMouseDown(object sender, MouseButtonEventArgs e)
       {
-         SignUp sign = new SignUp();
-         App.Current.MainWindow = sign;
+         SignUp signUpPage = new SignUp();
+         App.Current.MainWindow = signUpPage;
          this.Close();
-         sign.Show();
+         signUpPage.Show();
       }
 
       private void signupMouseEnter(object sender, MouseEventArgs e)
@@ -134,16 +135,17 @@ namespace OffCampusHousingDatabase
          //go through filters and see if any need to be added
          StringBuilder whereClause = new StringBuilder();
          bool andNeeded = false;
-
+         bool isRentFiltered = checkFilter(filterRentTextbox.Text);
+         bool isRoomFiltered = checkFilter(filterRoomTextbox.Text);
 
          //iterate through all of the different filter controls
-         if (filterRentTextbox.Text != "")
+         if (filterRentTextbox.Text != "" && isRentFiltered)
          {
             whereClause.Append("`MonthlyRent` < " + filterRentTextbox.Text);
             andNeeded = true;
          }
 
-         if(filterRoomTextbox.Text!= "")
+         if (filterRoomTextbox.Text!= "" && isRoomFiltered)
          {
              String whereString = "`NumberOfRooms` > " + filterRoomTextbox.Text;
              if(andNeeded)
@@ -156,6 +158,15 @@ namespace OffCampusHousingDatabase
                  andNeeded = true;
              }
          }
+
+         if(isRentFiltered == false || isRoomFiltered == false)
+         {
+            filterLabel.Visibility = System.Windows.Visibility.Visible;
+         }
+         else
+         {
+            filterLabel.Visibility = System.Windows.Visibility.Hidden;
+         }
         
          propertyListView.Items.Clear();
 
@@ -166,6 +177,33 @@ namespace OffCampusHousingDatabase
             propertyListView.Items.Add(new PropertyItem { PropID = Convert.ToInt32(row[0]), Addr = row[2], Rent = Convert.ToInt32(row[5]), NumberOfRooms = Convert.ToInt32(row[4]) });
          }
 
+      }
+
+      private void loadAllProperties()
+      {
+         StringBuilder whereClause = new StringBuilder();
+         bool andNeeded = false;
+
+         propertyListView.Items.Clear();
+
+         ArrayList rows = dbHelper.databaseSelect("Property", whereClause.ToString());
+
+         foreach (String[] row in rows)
+         {
+            propertyListView.Items.Add(new PropertyItem { PropID = Convert.ToInt32(row[0]), Addr = row[2], Rent = Convert.ToInt32(row[5]), NumberOfRooms = Convert.ToInt32(row[4]) });
+         }
+      }
+
+      private bool checkFilter(String filter)
+      {
+         if (!filter.Any(Char.IsLetter) || filter.Equals(""))
+         { 
+            return true;
+         }
+         else
+         {
+            return false;
+         }
       }
 
       private class PropertyItem
