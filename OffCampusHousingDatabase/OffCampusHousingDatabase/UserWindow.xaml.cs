@@ -24,7 +24,7 @@ namespace OffCampusHousingDatabase
         #region variables
 
         DatabaseHelper dbHelper;
-
+        bool isOwnProfile;
         #endregion
 
 
