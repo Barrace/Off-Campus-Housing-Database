@@ -122,6 +122,12 @@ namespace OffCampusHousingDatabase {
             return;
             case 2:
             this.updatePass = ((System.Windows.Controls.Button)(target));
+            
+            #line 13 "..\..\UserWindow.xaml"
+            this.updatePass.Click += new System.Windows.RoutedEventHandler(this.updatePass_Click);
+            
+            #line default
+            #line hidden
             return;
             case 3:
             this.listLabel = ((System.Windows.Controls.Label)(target));

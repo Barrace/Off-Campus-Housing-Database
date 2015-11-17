@@ -24,7 +24,6 @@ namespace OffCampusHousingDatabase
         #region variables
 
         DatabaseHelper dbHelper;
-        bool isOwnProfile;
         #endregion
 
 
@@ -128,6 +127,14 @@ namespace OffCampusHousingDatabase
             public string Addr { get; set; }
             public int Rent { get; set; }
             public int NumberOfRooms { get; set; }
+        }
+
+        private void updatePass_Click(object sender, RoutedEventArgs e)
+        {
+            ChangePassword newScreen = new ChangePassword();
+            App.Current.MainWindow = newScreen;
+            newScreen.Show();
+            this.Close();
         }
 
 
