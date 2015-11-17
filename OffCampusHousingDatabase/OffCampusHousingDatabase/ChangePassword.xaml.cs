@@ -37,6 +37,16 @@ namespace OffCampusHousingDatabase
 
         #endregion
 
+        private void changePass_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cancel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         #region Logic
 
         #endregion
