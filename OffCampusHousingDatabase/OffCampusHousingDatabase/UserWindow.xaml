@@ -8,8 +8,8 @@
             <ColumnDefinition Width="199*"/>
         </Grid.ColumnDefinitions>
         <Rectangle Fill="#FF90BCFD" HorizontalAlignment="Left" Height="46" Stroke="Black" VerticalAlignment="Top" Width="818" Margin="-18,0,0,0" Grid.ColumnSpan="2"/>
-        <Label x:Name="emailLabel" Content="Email: " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
-        <Label Content="Phone: " HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="emailLabel" Content="Email: " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" MouseDown="email_mouseDown"/>
+        <Label x:Name="phoneLabel" Content="Phone: " HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" MouseDown="phone_mouseDown"/>
         <Button x:Name="updatePass" Content="Update Password" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top" Width="123" Click="updatePass_Click"/>
         <Label x:Name="listLabel" Content="Watched Properties:" HorizontalAlignment="Left" Margin="197,78,0,0" VerticalAlignment="Top"/>
         <Button x:Name="Back" Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="Back_Click"/>
@@ -26,6 +26,8 @@
         </ListView>
 
         <Button x:Name="NewPropertyButton" Content="New Property" Grid.Column="1" HorizontalAlignment="Left" Margin="80,389,0,0" VerticalAlignment="Top" Width="92" Click="NewPropertyButton_Click"/>
+        <TextBox x:Name="emailTextBox" HorizontalAlignment="Left" Height="23" Margin="13,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="phoneTextBox" HorizontalAlignment="Left" Height="23" Margin="13,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
 
     </Grid>

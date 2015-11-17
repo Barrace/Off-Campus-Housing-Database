@@ -22,7 +22,7 @@ namespace OffCampusHousingDatabase
     {
 
         #region variables
-
+        bool isOwnProfile;
         DatabaseHelper dbHelper;
         #endregion
 
@@ -40,10 +40,14 @@ namespace OffCampusHousingDatabase
             InitializeComponent();
             dbHelper = new DatabaseHelper(ConfigurationManager.ConnectionStrings["MySQLDB"].ConnectionString);
             emailLabel.Content = userEmail;
+            emailTextBox.Visibility = Visibility.Hidden;
+            phoneTextBox.Visibility = Visibility.Hidden;
 
             //This is your profile
             if (userEmail.Equals(Globals.email))
             {
+                isOwnProfile = true;
+                NewPropertyButton.Visibility = Visibility.Hidden;
                 //if you are a manager
                 if (Globals.isManager)
                 {
@@ -74,6 +78,7 @@ namespace OffCampusHousingDatabase
             }
             else
             {
+                isOwnProfile = false;
                 userPropertyView.Visibility = Visibility.Hidden;
                 listLabel.Visibility = Visibility.Hidden;
                 updatePass.Visibility = Visibility.Hidden;
@@ -135,6 +140,24 @@ namespace OffCampusHousingDatabase
             App.Current.MainWindow = newScreen;
             newScreen.Show();
             this.Close();
+        }
+
+        private void email_mouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(isOwnProfile)
+            {
+                emailLabel.Visibility = Visibility.Hidden;
+                emailTextBox.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void phone_mouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(isOwnProfile)
+            {
+                phoneLabel.Visibility = Visibility.Hidden;
+                phoneTextBox.Visibility = Visibility.Visible;
+            }
         }
 
 

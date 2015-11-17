@@ -44,7 +44,11 @@ namespace OffCampusHousingDatabase
 
         private void cancel_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow main;
+            main = new MainWindow();
+            App.Current.MainWindow = main;
+            this.Close();
+            main.Show();
         }
 
         #region Logic
